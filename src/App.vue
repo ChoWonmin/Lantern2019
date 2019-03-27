@@ -1,28 +1,15 @@
-<template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
+<template lang="pug">
+  v-app
+    v-container
+      v-text-field(placeholder='id')
+      v-text-field(placeholder='pw')
+      v-btn(@click="clickBtn") login
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import api from './firebase/firebase.wrapper';
 
 export default {
   name: 'App',
@@ -31,7 +18,14 @@ export default {
   },
   data () {
     return {
-      //
+    }
+  },
+  methods: {
+    clickBtn() {
+      console.log('hi');
+      api.database.doc('hello').set({
+        test: '바이서경'
+      })
     }
   }
 }
