@@ -24,8 +24,7 @@ export default {
   },
   methods: {
     clickBtn() {
-      console.log(authModule);
-      authModule.login();
+      authModule.facebookLogin();
     }
   }
 }

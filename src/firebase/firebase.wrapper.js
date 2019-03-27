@@ -11,7 +11,7 @@ const resources = {
 };
 
 const authModule = {
-  login: () => {
+  googleLogin: () => {
     resources.auth.signInWithPopup(resources.provider)
       .then((res)=>{
         console.log(res);
@@ -19,6 +19,9 @@ const authModule = {
       .catch((error)=>{
         console.error(error);
     });
+  },
+  facebookLogin: () => {
+
   }
 };
 
