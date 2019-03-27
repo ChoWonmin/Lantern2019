@@ -1,15 +1,15 @@
 <template lang="pug">
   v-app
     v-container
-      v-text-field(placeholder='id')
-      v-text-field(placeholder='pw')
+      .hello {{email}}
+      v-text-field(placeholder='id' v-model="email")
+      v-text-field(placeholder='pw' v-model="password")
       v-btn(@click="clickBtn") login
-
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
-import api from './firebase/firebase.wrapper';
+import authModule from './firebase/firebase.wrapper';
 
 export default {
   name: 'App',
@@ -18,14 +18,14 @@ export default {
   },
   data () {
     return {
+      email: undefined,
+      password: undefined
     }
   },
   methods: {
     clickBtn() {
-      console.log('hi');
-      api.database.doc('hello').set({
-        test: '바이서경'
-      })
+      console.log(authModule);
+      authModule.login();
     }
   }
 }
