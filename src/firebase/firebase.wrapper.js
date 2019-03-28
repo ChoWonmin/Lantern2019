@@ -10,19 +10,34 @@ const resources = {
   storage: firebase.storage(),
 };
 
+const providerFB = new firebase.auth.FacebookAuthProvider();
+providerFB.addScope('user_birthday');
+providerFB.addScope('user_gender');
+
+
+
 const authModule = {
   googleLogin: () => {
-    resources.auth.signInWithPopup(resources.provider)
-      .then((res)=>{
-        console.log(res);
-      })
-      .catch((error)=>{
-        console.error(error);
-    });
+    // resources.auth.signInWithPopup(resources.provider)
+    //   .then((res)=>{
+    //     console.log(res);
+    //   })
+    //   .catch((error)=>{
+    //     console.error(error);
+    // });
   },
   facebookLogin: () => {
-
+    // firebase.auth().signInWithPopup(providerFB)
+    //   .then(function(result) {
+    //     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    //     var token = result.credential.accessToken;
+    //     // The signed-in user info.
+    //     var user = result.user;
+    //     console.log(user);
+    //   }).catch(function(error) {
+    //   console.error(error);
+    // });
   }
 };
 
-export default authModule;
+export default { authModule, resources};
