@@ -1,10 +1,7 @@
 <template lang="pug">
   v-app
-    v-container
-      .hello {{email}}
-      v-text-field(placeholder='id' v-model="email")
-      v-text-field(placeholder='pw' v-model="password")
-      v-btn(@click="clickBtn") login
+    v-content
+      router-view
 </template>
 
 <script>
