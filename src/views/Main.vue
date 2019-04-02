@@ -1,15 +1,17 @@
 <template lang="pug">
-  v-container
+  v-container.pa-0.ma-0
     v-layout
       Header
+    Search
 </template>
 
 <script>
 import Header from '../components/Header';
+import Search from '../components/Search';
 
 export default {
   components: {
-    Header
+    Header, Search
   },
   data() {
     return '';
