@@ -6,10 +6,10 @@
         v-content
           v-layout(align-center column)
             v-flex
-              v-btn(color="orange").elevation-80
+              v-btn(color="#3b5998").font-weight-bold
                 .login-btn sign in with Facebook
             v-flex
-              v-btn(color="yellow")
+              v-btn(color="#dd4b39").font-weight-bold
                 .login-btn sign in with Google
       v-spacer
 </template>
@@ -26,4 +26,5 @@ export default {
 <style scoped lang="sass">
 .login-btn
   width: 240px
+  color: #efefef
 </style>

@@ -26,3 +26,8 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+*
+  font-family: 'Helvetica Neue', 'Nanum Gothic', sans-serif
+</style>
