@@ -2,7 +2,8 @@
   v-container.pa-0.ma-0
     v-layout
       Header
-    Search
+    v-layout
+      Search
 </template>
 
 <script>
@@ -14,7 +15,7 @@ export default {
     Header, Search
   },
   data() {
-    return '';
+    return {};
   },
   methods: {}
 };

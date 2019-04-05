@@ -1,17 +1,19 @@
 <template lang="pug">
   v-app
     v-content
-      router-view
+      v-layout
+        router-view
+    BottomNav
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import BottomNav from './components/BottomNav'
 import authModule from './firebase/firebase.wrapper';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BottomNav
   },
   data () {
     return {
