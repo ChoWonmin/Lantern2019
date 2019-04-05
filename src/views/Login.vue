@@ -1,22 +1,24 @@
 <template lang="pug">
   v-container(align-center="true")
-    v-layout
-      v-spacer
-      v-flex
-        v-content
-          v-layout(align-center column)
-            v-flex
-              v-btn(color="#3b5998").font-weight-bold
-                .login-btn sign in with Facebook
-            v-flex
-              v-btn(color="#dd4b39").font-weight-bold
-                .login-btn sign in with Google
-      v-spacer
+    Header
+    v-layout(align-center justify-center column fill-height)
+      v-card
+        v-flex
+          v-btn(color="#3b5998").font-weight-bold
+            .login-btn sign in with Facebook
+        v-flex
+          v-btn(color="#dd4b39").font-weight-bold
+            .login-btn sign in with Google
 </template>
 
 <script>
+import Header from '../components/Header';
+
 export default {
   name: 'Login',
+  components: {
+    Header
+  },
   data() {
     return {};
   },

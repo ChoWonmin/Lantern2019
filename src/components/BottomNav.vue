@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-bottom-nav.bottom-nav
+  v-bottom-nav(fixed).bottom-nav
     v-btn
       v-icon list
     v-btn
@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-  .bottom-nav
-    position: fixed
-    bottom: 56px
+.bottom-nav
+  bottom: 56px !important
 </style>

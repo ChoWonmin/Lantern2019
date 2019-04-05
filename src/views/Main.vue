@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container.pa-0.ma-0
+  v-container
     v-layout
       Header
     v-layout
