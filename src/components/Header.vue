@@ -1,6 +1,6 @@
 <template lang="pug">
   .header.grey.lighten-4
-      v-flex.pt-4.pb-1
+      v-flex
         v-img(:src="require('../assets/logo_lantern.svg')" height="40" contain )
 </template>
 
@@ -16,8 +16,10 @@
 
 <style scoped lang="sass">
 .header
- height: 80px
+ height: 70px !important
  z-index: 100
  top: 0
  position: sticky
+ display: flex
+ align-items: center
 </style>

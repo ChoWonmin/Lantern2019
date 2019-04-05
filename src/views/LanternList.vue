@@ -1,14 +1,12 @@
 <template lang="pug">
   v-container(align-center)
     v-layout
-      v-spacer
       v-flex
         v-content
           v-card(v-for="lantern in list")
             v-layout
               v-flex(align-self-center xs3)
                 v-icon face
-                <!--v-img(:src="require('../assets/logo.png')")-->
               v-flex(xs8)
                 v-layout
                   .name {{lantern.name}}
@@ -18,7 +16,6 @@
                   .keywords {{lantern.keywords.join(' ')}}
               v-flex(xs1)
                 v-icon home
-      v-spacer
 
 </template>
 
