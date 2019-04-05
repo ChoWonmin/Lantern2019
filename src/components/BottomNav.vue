@@ -1,13 +1,13 @@
 <template lang="pug">
-  v-bottom-nav(fixed).bottom-nav
+  v-bottom-nav().bottom-nav
     v-btn
-      v-icon list
+      v-img(:src="require('../assets/lanternlogosimple2.svg')" width="14" contain).logo-icon
     v-btn
-      v-icon person
+      v-icon view_list
+    v-btn
+      v-icon sms
     v-btn
       v-icon home
-    v-btn
-      v-icon close
 </template>
 
 <script>
@@ -22,4 +22,6 @@ export default {
 <style scoped lang="sass">
 .bottom-nav
   bottom: 56px !important
+  position: sticky
+
 </style>

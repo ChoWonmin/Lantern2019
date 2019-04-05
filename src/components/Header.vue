@@ -1,7 +1,6 @@
 <template lang="pug">
-  v-content.grey.lighten-4
-      v-layout
-      v-flex.xs12.pt-4.pb-1
+  .header.grey.lighten-4
+      v-flex.pt-4.pb-1
         v-img(:src="require('../assets/logo_lantern.svg')" height="40" contain )
 </template>
 
@@ -16,5 +15,9 @@
 </script>
 
 <style scoped lang="sass">
-
+.header
+ height: 80px
+ z-index: 100
+ top: 0
+ position: sticky
 </style>

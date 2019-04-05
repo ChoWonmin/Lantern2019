@@ -1,5 +1,6 @@
 <template lang="pug">
   v-app
+    Header
     v-content.content
       v-layout(fill-height)
         router-view.pa-0.ma-0
@@ -7,12 +8,14 @@
 </template>
 
 <script>
+import Header from './components/Header';
 import BottomNav from './components/BottomNav'
 import authModule from './firebase/firebase.wrapper';
 
 export default {
   name: 'App',
   components: {
+    Header,
     BottomNav
   },
   data () {

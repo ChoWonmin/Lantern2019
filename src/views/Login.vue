@@ -9,6 +9,9 @@
         v-flex
           v-btn(color="#dd4b39").font-weight-bold
             .login-btn sign in with Google
+        v-flex
+          v-btn(color="#dd4b39").font-weight-bold
+            .login-btn sign in with Google
 </template>
 
 <script>
