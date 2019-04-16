@@ -1,9 +1,8 @@
 <template lang="pug">
   v-app
     Header
-    v-content.content
-      v-layout(fill-height)
-        router-view.pa-0.ma-0
+    .content-wrapper
+      router-view.pa-0.ma-0
     BottomNav
 </template>
 
@@ -35,5 +34,10 @@ export default {
 <style lang="sass">
 *
   font-family: 'Helvetica Neue', 'Nanum Gothic', sans-serif
+
+.content-wrapper
+  position: sticky
+  height: calc(100vh - 126px)
+
 
 </style>
