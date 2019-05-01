@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Main from './views/Main.vue';
 import LanternList from './views/LanternList.vue';
+import Messanger from './views/Messanger';
 
 Vue.use(Router);
 
@@ -33,6 +34,11 @@ export default new Router({
       path: '/lanternList',
       name: 'lanternList',
       component: LanternList
+    },
+    {
+      path: '/messanger',
+      name: 'messanger',
+      component: Messanger
     }
   ]
 });

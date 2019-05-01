@@ -4,7 +4,7 @@
       v-img(:src="require('../assets/lanternlogosimple2.svg')" width="14" contain).logo-icon
     v-btn(to="lanternList")
       v-icon view_list
-    v-btn
+    v-btn(to="messanger")
       v-icon sms
     v-btn
       v-icon home
