@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app
+  v-app.app-root
     Header
     .content-wrapper
       router-view.pa-0.ma-0
@@ -39,5 +39,7 @@ export default {
   position: sticky
   height: calc(100vh - 126px)
 
+.app-root
+  overflow: hidden
 
 </style>
