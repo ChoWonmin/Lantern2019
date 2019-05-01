@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container(align-center)
+  v-container(align-center fill-height fluid style="overflow-y: scroll;")
     v-layout
       v-flex(xs12)
         v-content

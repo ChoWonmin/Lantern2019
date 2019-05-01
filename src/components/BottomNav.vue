@@ -1,8 +1,8 @@
 <template lang="pug">
   v-bottom-nav().bottom-nav
-    v-btn
+    v-btn(to="/")
       v-img(:src="require('../assets/lanternlogosimple2.svg')" width="14" contain).logo-icon
-    v-btn
+    v-btn(to="lanternList")
       v-icon view_list
     v-btn
       v-icon sms
