@@ -32,12 +32,13 @@ export default {
 </script>
 
 <style lang="sass">
+$content-height : calc(100vh - 126px)
+
 *
   font-family: 'Helvetica Neue', 'Nanum Gothic', sans-serif
 
 .content-wrapper
-  position: sticky
-  height: calc(100vh - 126px)
+  height: $content-height
 
 .app-root
   overflow: hidden
