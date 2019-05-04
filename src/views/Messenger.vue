@@ -13,13 +13,13 @@
       v-card.message-room-wrapper
         .message-room
           .message-room-profile
-            v-img(:src="require('../assets/profile01.jpg')" contain).circle
+            v-img(:src="require('../assets/profile02.jpg')" contain).circle
           .message-room-content
-            .message-room-content-name 백하준
+            .message-room-content-name IU
             .message-room-content-msg  봉투가 도착했어요. 화이팅 우와 짱짱이다
           .message-room-time
             .message-room-time-text 10:12
-      v-card.message-room-wrapper
+      v-card.message-room-wrapper(@click="$router.push('chatting')")
         .message-room
           .message-room-profile
             v-img(:src="require('../assets/profile01.jpg')" contain).circle
@@ -46,6 +46,7 @@ $message-room-height: 120px
   padding: 12px 4px
   width: 100%
   height: $message-room-height
+  cursor: pointer
   .message-room
     width: 100%
     height: 100%
@@ -54,7 +55,8 @@ $message-room-height: 120px
     .message-room-profile
       flex: 3
       .circle
-        width: 72px
+        width: 86px
+        height: 86px
         border-radius: 20px
     .message-room-content
       flex: 7
