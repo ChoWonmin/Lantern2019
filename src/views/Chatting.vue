@@ -15,7 +15,7 @@
             .text.my {{msg.text}}
             .time {{msg.time}}
     .message-input-wrapper
-      v-textarea(solo)
+      v-textarea(solo height="92px" rows="3")
       v-btn() 전송
 </template>
 
@@ -46,7 +46,7 @@ export default {
 
 <style scoped lang="sass">
 $message-height: 90px
-$message-input-height: 50px
+$message-input-height: 96px
 
 .chatting
   overflow-y: scroll
@@ -82,6 +82,7 @@ $message-input-height: 50px
         .time
 
 .message-input-wrapper
+  padding-bottom: 4px
   display: flex
-  height: 68px
+  height: $message-input-height
 </style>
