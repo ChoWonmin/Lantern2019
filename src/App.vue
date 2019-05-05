@@ -9,7 +9,10 @@
 <script>
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
-import authModule from './firebase/firebase.wrapper';
+import { autoModule, dataModule } from './firebase/firebase.wrapper';
+import Vue from 'vue';
+
+Vue.prototype.$api = dataModule;
 
 export default {
   name: 'App',
@@ -25,7 +28,7 @@ export default {
   },
   methods: {
     clickBtn() {
-      authModule.facebookLogin();
+      autoModule.facebookLogin();
     }
   }
 }

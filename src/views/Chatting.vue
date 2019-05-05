@@ -15,8 +15,8 @@
             .text.my {{msg.text}}
             .time {{msg.time}}
     .message-input-wrapper
-      v-textarea(solo height="92px" rows="3")
-      v-btn() 전송
+      v-textarea(solo height="92px" rows="3" v-model="inputMsg")
+      v-btn(@click="send") 전송
 </template>
 
 <script>
@@ -37,10 +37,16 @@ export default {
           text: 'hi',
           time: '12:07'
         },
-      ]
+      ],
+      inputMsg: ''
     };
   },
-  methods: {}
+  methods: {
+    send: function() {
+      // console.log(this.$api);
+      this.inputMsg = this.$api.sendMsg();
+    }
+  }
 };
 </script>
 

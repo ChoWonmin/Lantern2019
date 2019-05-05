@@ -14,28 +14,28 @@ const providerFB = new firebase.auth.FacebookAuthProvider();
 providerFB.addScope('user_birthday');
 providerFB.addScope('user_gender');
 
-
-
 const authModule = {
   googleLogin: () => {
     resources.auth.signInWithPopup(resources.provider)
-      .then((res)=>{
-        console.log(res);
-      })
-      .catch((error)=>{
-        console.error(error);
-    });
+      // .then((res)=>{
+      //
+      // })
+      // .catch((error)=>{
+    // });
   },
   facebookLogin: () => {
     firebase.auth().signInWithPopup(providerFB)
-      .then(function(result) {
+      // .then(function(result) {
         // const token = result.credential.accessToken;
-        const user = result.user;
-        console.log(user);
-      }).catch(function(error) {
-      console.error(error);
-    });
+        // const user = result.user;
+
+      // }).catch(function(error) {
+    // });
   }
 };
 
-export default { authModule, resources};
+const dataModule = {
+    sendMsg: () => 'send msg'
+};
+
+export { authModule, resources, dataModule};
