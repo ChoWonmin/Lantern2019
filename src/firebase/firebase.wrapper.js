@@ -59,7 +59,17 @@ const dataModule = {
 
     return rooms;
   },
-  sendMsg: () => 'send msg'
+  sendMsg: (id, sender, receiver, text) => {
+    resources.database.collection('MessageRooms').doc(id).collection('messages').add({
+      sender,
+      receiver,
+      text,
+      time: new Date()
+    });
+
+
+
+  }
 };
 
 export { authModule, resources, dataModule};

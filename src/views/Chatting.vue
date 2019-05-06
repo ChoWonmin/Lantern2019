@@ -15,7 +15,7 @@
             .text.my {{msg.text}}
             .time {{ $timeForm(msg.time.toDate()) }}
     .message-input-wrapper
-      v-textarea(solo height="92px" rows="3" v-model="inputMsg")
+      v-textarea(solo height="92px" rows="3" v-model="inputMsg" @click="send")
       v-btn(@click="send") 전송
 </template>
 
@@ -30,8 +30,7 @@ export default {
   },
   methods: {
     send: function() {
-      // console.log(this.$api);
-      this.inputMsg = this.$api.sendMsg();
+      this.inputMsg = this.$api.sendMsg(this.room.id, this.$user.id, this.other, this.inputMsg);
     }
   },
   mounted() {
