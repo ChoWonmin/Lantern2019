@@ -42,7 +42,7 @@ export default new Router({
       component: Messenger
     },
     {
-      path: '/chatting',
+      path: '/chatting/:room',
       name: 'chatting',
       component: Chatting
     }

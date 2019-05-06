@@ -1,15 +1,15 @@
 <template lang="pug">
   v-container(fill-height fluid style="overflow-y: scroll;")
     v-layout(column)
-      v-card.message-room-wrapper(v-for="room in rooms")
+      v-card.message-room-wrapper(v-for="room in rooms" @click="$router.push({name: 'chatting', params: {room: room}})")
         .message-room
           .message-room-profile
             v-img(:src="require('../assets/profile01.jpg')" contain).circle
           .message-room-content
-            .message-room-content-name {{$user.id===room.messages[0].sender?room.messages[0].receiver:room.messages[0].sender}}
+            .message-room-content-name {{room.other}}
             .message-room-content-msg  {{room.messages[0].text}}
           .message-room-time
-            .message-room-time-text {{room.messages[0].time}}
+            .message-room-time-text {{`${room.messages[0].time.toDate().getHours()} : ${room.messages[0].time.toDate().getMinutes()}`}}
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
   methods: {},
   async mounted() {
     this.rooms = await this.$api.readMessageRooms(this.$user.id);
+    this.$_.forEach(this.rooms, e => e.other = this.$user.id===e.messages[0].sender?e.messages[0].receiver:e.messages[0].sender);
   }
 };
 </script>
