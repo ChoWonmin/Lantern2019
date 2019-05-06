@@ -33,9 +33,14 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      rooms: []
+    };
   },
-  methods: {}
+  methods: {},
+  async mounted() {
+    this.rooms = await this.$api.readMessageRooms(this.$user.id);
+  }
 };
 </script>
 

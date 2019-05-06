@@ -1,12 +1,15 @@
 import firebase from 'firebase';
 import config from './firebase.key';
+import _ from 'lodash';
+
+import { consoleError } from 'vuetify/lib/util/console';
 
 firebase.initializeApp(config);
 
 const resources = {
   auth: firebase.auth(),
   provider: new firebase.auth.GoogleAuthProvider(),
-  database: firebase.firestore().collection('test'),
+  database: firebase.firestore(),
   storage: firebase.storage(),
 };
 
@@ -35,7 +38,21 @@ const authModule = {
 };
 
 const dataModule = {
-    sendMsg: () => 'send msg'
+  readMessageRooms: async (id) => {
+    const ret = (await resources.database.collection('Users').doc(id).get()).data().messageRooms;
+
+    console.log(ret);
+
+    const rooms = await _.map(ret, async e=> {
+      const tmp = (await resources.database.collection('MessageRooms').doc(e).get()).data();
+      console.log(e, 'sajndjskbfnjks');
+
+      return tmp;
+    });
+
+    console.log(rooms, 'rooms');
+  },
+  sendMsg: () => 'send msg'
 };
 
 export { authModule, resources, dataModule};

@@ -13,6 +13,10 @@ import { autoModule, dataModule } from './firebase/firebase.wrapper';
 import Vue from 'vue';
 
 Vue.prototype.$api = dataModule;
+Vue.prototype.$user = {
+  id: '0108257@gmail.com',
+  login: true
+};
 
 export default {
   name: 'App',
