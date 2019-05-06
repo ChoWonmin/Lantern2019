@@ -1,19 +1,19 @@
 <template lang="pug">
   v-container
     v-layout(column).chatting
-      .message-wrapper(v-for="msg in messages")
-        .message-line(v-show="myId!==msg.id")
+      .message-wrapper(v-for="msg in $route.params.room.messages")
+        .message-line(v-show="other===msg.sender")
           .profile
-            v-img(:src="msg.profile" contain).circle
+            v-img(:src="require('../assets/profile02.jpg')" contain).circle
           .content-wrapper
             .text.other {{msg.text}}
-            .time {{msg.time}}
+            .time {{ $timeForm(msg.time.toDate()) }}
         v-spacer
-        .message-line(v-show="myId===msg.id")
+        .message-line(v-show="$user.id===msg.sender")
           v-spacer
           .content-wrapper
             .text.my {{msg.text}}
-            .time {{msg.time}}
+            .time {{ $timeForm(msg.time.toDate()) }}
     .message-input-wrapper
       v-textarea(solo height="92px" rows="3" v-model="inputMsg")
       v-btn(@click="send") 전송
@@ -23,22 +23,9 @@
 export default {
   data() {
     return {
-      myId: '001',
-      messages: [
-        {
-          id: '001',
-          profile: require('../assets/profile02.jpg'),
-          text: 'hello',
-          time: '12:05'
-        },
-        {
-          id: '002',
-          profile: require('../assets/profile01.jpg'),
-          text: 'hi',
-          time: '12:07'
-        },
-      ],
-      inputMsg: ''
+      room: {},
+      inputMsg: '',
+      other: ''
     };
   },
   methods: {
@@ -46,6 +33,10 @@ export default {
       // console.log(this.$api);
       this.inputMsg = this.$api.sendMsg();
     }
+  },
+  mounted() {
+    this.room = this.$route.params.room;
+    this.other = this.room.messages[0].sender === this.$user.id ?this.room.messages[0].receiver:this.room.messages[0].sender;
   }
 };
 </script>

@@ -19,6 +19,7 @@ Vue.prototype.$user = {
   id: '0108257@gmail.com',
   login: true
 };
+Vue.prototype.$timeForm = (date) => `${date.getHours()} : ${date.getMinutes()}`;
 
 export default {
   name: 'App',
