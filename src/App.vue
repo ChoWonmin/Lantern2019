@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import _ from 'lodash';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
 import { autoModule, dataModule } from './firebase/firebase.wrapper';
-import Vue from 'vue';
 
+Vue.prototype.$_ = _;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$user = {
   id: '0108257@gmail.com',

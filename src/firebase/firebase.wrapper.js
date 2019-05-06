@@ -41,8 +41,6 @@ const dataModule = {
   readMessageRooms: async (id) => {
     const ret = (await resources.database.collection('Users').doc(id).get()).data().messageRooms;
 
-    console.log(ret);
-
     const rooms = await Promise.all(_.map(ret, async e=> {
 
       const ref = resources.database.collection('MessageRooms').doc(e);
@@ -58,6 +56,8 @@ const dataModule = {
 
       return room;
     }));
+
+    return rooms;
   },
   sendMsg: () => 'send msg'
 };

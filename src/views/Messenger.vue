@@ -1,33 +1,15 @@
 <template lang="pug">
   v-container(fill-height fluid style="overflow-y: scroll;")
     v-layout(column)
-      v-card.message-room-wrapper
+      v-card.message-room-wrapper(v-for="room in rooms")
         .message-room
           .message-room-profile
             v-img(:src="require('../assets/profile01.jpg')" contain).circle
           .message-room-content
-            .message-room-content-name 백하준
-            .message-room-content-msg  봉투가 도착했어요. 화이팅 우와 짱짱이다
+            .message-room-content-name {{$user.id===room.messages[0].sender?room.messages[0].receiver:room.messages[0].sender}}
+            .message-room-content-msg  {{room.messages[0].text}}
           .message-room-time
-            .message-room-time-text 10:12
-      v-card.message-room-wrapper
-        .message-room
-          .message-room-profile
-            v-img(:src="require('../assets/profile02.jpg')" contain).circle
-          .message-room-content
-            .message-room-content-name IU
-            .message-room-content-msg  봉투가 도착했어요. 화이팅 우와 짱짱이다
-          .message-room-time
-            .message-room-time-text 10:12
-      v-card.message-room-wrapper(@click="$router.push('chatting')")
-        .message-room
-          .message-room-profile
-            v-img(:src="require('../assets/profile01.jpg')" contain).circle
-          .message-room-content
-            .message-room-content-name 백하준
-            .message-room-content-msg  봉투가 도착했어요. 화이팅 우와 짱짱이다
-          .message-room-time
-            .message-room-time-text 10:12
+            .message-room-time-text {{room.messages[0].time}}
 </template>
 
 <script>
