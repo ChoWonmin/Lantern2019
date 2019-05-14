@@ -26,8 +26,18 @@ export default {
     };
   },
   methods: {
-    loginFacebook() {
-      this.$auth.facebookLogin();
+    async isUser(user) {
+        const flag = await this.$api.readUser(user.email);
+        if(flag == null){
+            alert("가입되었습니다!ㅊㅋㅊㅋ");
+            this.$api.addUser(user.email, user.displayName);
+        }
+        //this.$api.addUser(user.email, user.displayName);
+
+    },
+    async loginFacebook() {
+      const res = await this.$auth.facebookLogin();
+      this.isUser(res.user);
     },
     async loginGoogle() {
       const res = await this.$auth.googleLogin();
