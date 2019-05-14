@@ -18,7 +18,6 @@ providerFB.addScope('user_birthday');
 providerFB.addScope('user_gender');
 
 const authModule = {
-  hello: () => 'hel',
   googleLogin: async () => await resources.auth.signInWithPopup(resources.provider),
   facebookLogin: () => {
     firebase.auth().signInWithPopup(providerFB)
@@ -34,6 +33,16 @@ const authModule = {
 };
 
 const dataModule = {
+  addUser: (email, name) => {
+    resources.database.collection('Users').doc(email).add({
+      email: email,
+      name: name
+    });
+  },
+  readUser: async (email) => {
+    return (await resources.database.collection('Users').doc(email).get()).data()
+  }
+  ,
   readMessageRooms: async (id) => {
     const ret = (await resources.database.collection('Users').doc(id).get()).data().messageRooms;
     const rooms = await Promise.all(_.map(ret, async e=> {

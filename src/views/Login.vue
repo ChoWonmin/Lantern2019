@@ -21,25 +21,22 @@ export default {
     Header
   },
   data() {
-    return {};
+    return {
+      test: {}
+    };
   },
   methods: {
     loginFacebook() {
       this.$auth.facebookLogin();
     },
-    loginGoogle() {
-      try {
-        const user = this.$auth.googleLogin();
+    async loginGoogle() {
+      const res = await this.$auth.googleLogin();
 
-        this.$user.email = user.email;
-        this.$user.displayName = user.displayName;
-        this.$user.login = true;
+      this.$user.email = res.user.email;
+      this.$user.displayName = res.user.displayName;
+      this.$user.login = true;
 
-
-
-      } catch (e) {
-        // error
-      }
+      this.test = await this.$api.readUser(this.$user.email);
     }
   }
 };
