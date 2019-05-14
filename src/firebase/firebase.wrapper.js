@@ -47,7 +47,7 @@ const dataModule = {
     const rooms = await Promise.all(_.map(messageRooms, async e=> {
       const ref = resources.database.collection('MessageRooms').doc(e);
       const room = (await ref.get()).data();
-      room.message = (await ref.collection('messages').get());
+      (await ref.collection('messages').orderBy('time').limit(1).get()).forEach(e=>room.message=e.data());
       return room;
     }));
 

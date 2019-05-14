@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     this.room = this.$route.params.room;
-    this.other = this.room.messages[0].sender === this.$user.id ?this.room.messages[0].receiver:this.room.messages[0].sender;
+    this.other = this.room.message.sender === this.$user.id ?this.room.message.receiver:this.room.message.sender;
   }
 };
 </script>
