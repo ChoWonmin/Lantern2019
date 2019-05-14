@@ -1,10 +1,10 @@
 <template lang="pug">
   v-container(align-center fill-height)
     v-layout(column)
-      v-flex
-        v-btn(color="#3b5998" @click="login").font-weight-bold
+      v-flex(@click="loginFacebook")
+        v-btn(color="#3b5998").font-weight-bold
           .login-btn sign in with Facebook
-      v-flex
+      v-flex(@click="loginGoogle")
         v-btn(color="#dd4b39").font-weight-bold
           .login-btn sign in with Google
       v-flex
@@ -24,11 +24,22 @@ export default {
     return {};
   },
   methods: {
-    login() {
-      // console.log(
-      //   this.$auth.googleLogin()
-      // );
+    loginFacebook() {
+      this.$auth.facebookLogin();
+    },
+    loginGoogle() {
+      try {
+        const user = this.$auth.googleLogin();
 
+        this.$user.email = user.email;
+        this.$user.displayName = user.displayName;
+        this.$user.login = true;
+
+
+
+      } catch (e) {
+        // error
+      }
     }
   }
 };

@@ -17,8 +17,11 @@ Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$user = {
-  id: '0108257@gmail.com',
-  login: true
+  email: '',
+  login: false,
+  displayName: '',
+  gender: '',
+  age: -1,
 };
 Vue.prototype.$timeForm = (date) => `${date.getHours()} : ${date.getMinutes()}`;
 

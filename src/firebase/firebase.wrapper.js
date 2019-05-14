@@ -19,17 +19,7 @@ providerFB.addScope('user_gender');
 
 const authModule = {
   hello: () => 'hel',
-  googleLogin: () => {
-    console.log('start');
-
-    resources.auth.signInWithPopup(resources.provider)
-      .then((res)=>{
-        console.log(res, 'google');
-      })
-      .catch((error)=>{
-        consoleError(error);
-    });
-  },
+  googleLogin: async () => await resources.auth.signInWithPopup(resources.provider),
   facebookLogin: () => {
     firebase.auth().signInWithPopup(providerFB)
       .then(function(result) {
