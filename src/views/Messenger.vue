@@ -21,7 +21,7 @@ export default {
   },
   methods: {},
   async mounted() {
-    this.rooms = await this.$api.readMessageRooms(this.$user.id);
+    this.rooms = await this.$api.readMessageRooms(this.$user.messageRooms);
     this.$_.forEach(this.rooms, e => e.other = this.$user.id===e.messages[0].sender?e.messages[0].receiver:e.messages[0].sender);
   }
 };

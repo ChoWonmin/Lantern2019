@@ -43,17 +43,11 @@ const dataModule = {
     return (await resources.database.collection('Users').doc(email).get()).data()
   }
   ,
-  readMessageRooms: async (id) => {
-    const ret = (await resources.database.collection('Users').doc(id).get()).data().messageRooms;
-    const rooms = await Promise.all(_.map(ret, async e=> {
+  readMessageRooms: async (messageRooms) => {
+    const rooms = await Promise.all(_.map(messageRooms, async e=> {
       const ref = resources.database.collection('MessageRooms').doc(e);
       const room = (await ref.get()).data();
-      const messages = [];
-      (await ref.collection('messages').get()).forEach(e => {
-        messages.push(e.data());
-      });
-
-      room.messages = messages;
+      room.message = (await ref.collection('messages').get());
       return room;
     }));
 

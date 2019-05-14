@@ -17,8 +17,9 @@ Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$user = {
-  email: '',
-  login: false,
+  email: '0108257@gmail.com',
+  login: true,
+  messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
   displayName: '',
   gender: '',
   age: -1,
