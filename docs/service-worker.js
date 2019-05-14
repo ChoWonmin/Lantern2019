@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Lantern2019/precache-manifest.00cdf4c439c33ad538570d2b973804b6.js"
+  "/Lantern2019/precache-manifest.36370a3a70cb953291a8b3b3acb678f2.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "lantern"});

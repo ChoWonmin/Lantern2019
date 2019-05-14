@@ -2,7 +2,7 @@
   v-container(align-center fill-height)
     v-layout(column)
       v-flex
-        v-btn(color="#3b5998").font-weight-bold
+        v-btn(color="#3b5998" @click="login").font-weight-bold
           .login-btn sign in with Facebook
       v-flex
         v-btn(color="#dd4b39").font-weight-bold
@@ -23,6 +23,14 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    login() {
+      // console.log(
+      //   this.$auth.googleLogin()
+      // );
+
+    }
+  }
 };
 </script>
 

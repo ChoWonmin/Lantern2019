@@ -11,9 +11,10 @@ import Vue from 'vue';
 import _ from 'lodash';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
-import { autoModule, dataModule } from './firebase/firebase.wrapper';
+import { authModule, dataModule } from './firebase/firebase.wrapper';
 
 Vue.prototype.$_ = _;
+Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$user = {
   id: '0108257@gmail.com',
@@ -34,9 +35,6 @@ export default {
     }
   },
   methods: {
-    clickBtn() {
-      autoModule.facebookLogin();
-    }
   }
 }
 </script>

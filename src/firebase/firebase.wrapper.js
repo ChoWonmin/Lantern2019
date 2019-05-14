@@ -18,42 +18,43 @@ providerFB.addScope('user_birthday');
 providerFB.addScope('user_gender');
 
 const authModule = {
+  hello: () => 'hel',
   googleLogin: () => {
+    console.log('start');
+
     resources.auth.signInWithPopup(resources.provider)
-      // .then((res)=>{
-      //
-      // })
-      // .catch((error)=>{
-    // });
+      .then((res)=>{
+        console.log(res, 'google');
+      })
+      .catch((error)=>{
+        consoleError(error);
+    });
   },
   facebookLogin: () => {
     firebase.auth().signInWithPopup(providerFB)
-      // .then(function(result) {
-        // const token = result.credential.accessToken;
-        // const user = result.user;
+      .then(function(result) {
+        const token = result.credential.accessToken;
+        const user = result.user;
 
-      // }).catch(function(error) {
-    // });
+        console.log(user);
+
+      }).catch(function(error) {
+    });
   }
 };
 
 const dataModule = {
   readMessageRooms: async (id) => {
     const ret = (await resources.database.collection('Users').doc(id).get()).data().messageRooms;
-
     const rooms = await Promise.all(_.map(ret, async e=> {
-
       const ref = resources.database.collection('MessageRooms').doc(e);
-
       const room = (await ref.get()).data();
-
       const messages = [];
       (await ref.collection('messages').get()).forEach(e => {
         messages.push(e.data());
       });
 
       room.messages = messages;
-
       return room;
     }));
 
@@ -66,8 +67,8 @@ const dataModule = {
       text,
       time: new Date()
     });
-
-
+  },
+  listenMessageRoom: () => {
 
   }
 };
