@@ -19,28 +19,31 @@ providerFB.addScope('user_gender');
 
 const authModule = {
   googleLogin: async () => await resources.auth.signInWithPopup(resources.provider),
-  facebookLogin: () => {
-    firebase.auth().signInWithPopup(providerFB)
-      .then(function(result) {
-        const token = result.credential.accessToken;
-        const user = result.user;
-
-        console.log(user);
-
-      }).catch(function(error) {
-    });
-  }
+  facebookLogin: async() => await firebase.auth().signInWithPopup(providerFB)
 };
 
 const dataModule = {
-  addUser: (email, name) => {
+  hasUser: async (email) => {
+    return (await resources.database.collection('Users').doc(email).get()).exists
+  },
+  addUser: async (email, name) => {
     resources.database.collection('Users').doc(email).add({
       email: email,
       name: name
     });
   },
   readUser: async (email) => {
-    return (await resources.database.collection('Users').doc(email).get()).data()
+    try {
+      const doc = await resources.database.collection('Users').doc(email).get();
+      if (!doc.exists) {
+        return null;
+      } else {
+        return doc.data();
+      }
+
+    } catch (e) {
+      return e;
+    }
   }
   ,
   readMessageRooms: async (messageRooms) => {
