@@ -32,21 +32,22 @@ export default {
             alert("가입되었습니다!ㅊㅋㅊㅋ");
             this.$api.addUser(user.email, user.displayName);
         }
-        //this.$api.addUser(user.email, user.displayName);
 
     },
     async loginFacebook() {
       const res = await this.$auth.facebookLogin();
       this.isUser(res.user);
-    },
-    async loginGoogle() {
-      const res = await this.$auth.googleLogin();
-
       this.$user.email = res.user.email;
       this.$user.displayName = res.user.displayName;
       this.$user.login = true;
 
-      this.test = await this.$api.readUser(this.$user.email);
+    },
+    async loginGoogle() {
+      const res = await this.$auth.googleLogin();
+      this.isUser(res.user);
+      this.$user.email = res.user.email;
+      this.$user.displayName = res.user.displayName;
+      this.$user.login = true;
     }
   }
 };
