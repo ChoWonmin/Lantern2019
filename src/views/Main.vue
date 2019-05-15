@@ -3,7 +3,6 @@
     v-layout(fill-height column)
       Search
       Swiper
-      <!--input(type="file" accept="image/*" capture="camera")-->
 </template>
 
 <script>
