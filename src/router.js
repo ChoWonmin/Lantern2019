@@ -5,6 +5,7 @@ import Main from './views/Main.vue';
 import LanternList from './views/LanternList.vue';
 import Messenger from './views/Messenger';
 import Chatting from './views/Chatting';
+import CardReg from './views/CardReg';
 
 Vue.use(Router);
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/chatting/:room',
       name: 'chatting',
       component: Chatting
+    },
+    {
+      path: '/cardReg',
+      name: 'cardReg',
+      component: CardReg
     }
   ]
 });
