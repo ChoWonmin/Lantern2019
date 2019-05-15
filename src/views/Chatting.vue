@@ -1,21 +1,21 @@
 <template lang="pug">
   v-container
     v-layout(column).chatting
-      .message-wrapper(v-for="msg in $route.params.room.messages")
-        .message-line(v-show="other===msg.sender")
-          .profile
-            v-img(:src="require('../assets/profile02.jpg')" contain).circle
-          .content-wrapper
-            .text.other {{msg.text}}
-            .time {{ $timeForm(msg.time.toDate()) }}
-        v-spacer
-        .message-line(v-show="$user.id===msg.sender")
-          v-spacer
-          .content-wrapper
-            .text.my {{msg.text}}
-            .time {{ $timeForm(msg.time.toDate()) }}
+      .message-wrapper(v-for="msg in messages")
+        <!--.message-line(v-show="other===msg.sender")-->
+          <!--.profile-->
+            <!--v-img(:src="require('../assets/profile02.jpg')" contain).circle-->
+          <!--.content-wrapper-->
+            <!--.text.other {{msg.text}}-->
+            <!--.time {{ $timeForm(msg.time.toDate()) }}-->
+        <!--v-spacer-->
+        <!--.message-line(v-show="$user.id===msg.sender")-->
+          <!--v-spacer-->
+          <!--.content-wrapper-->
+            <!--.text.my {{msg.text}}-->
+            <!--.time {{ $timeForm(msg.time.toDate()) }}-->
     .message-input-wrapper
-      v-textarea(solo height="92px" rows="3" v-model="inputMsg" @click="send")
+      v-textarea(solo height="92px" rows="3" v-model="inputMsg")
       v-btn(@click="send") 전송
 </template>
 
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       room: {},
+      messages: [],
       inputMsg: '',
       other: ''
     };
@@ -33,9 +34,10 @@ export default {
       this.inputMsg = this.$api.sendMsg(this.room.id, this.$user.id, this.other, this.inputMsg);
     }
   },
-  mounted() {
+  async mounted() {
     this.room = this.$route.params.room;
-    this.other = this.room.message.sender === this.$user.id ?this.room.message.receiver:this.room.message.sender;
+    this.messages = await this.$api.listenMessageRoom(this.room.id);
+    // this.other = this.room.message.sender === this.$user.id ?this.room.message.receiver:this.room.message.sender;
   }
 };
 </script>
