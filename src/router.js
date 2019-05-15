@@ -6,6 +6,7 @@ import LanternList from './views/LanternList.vue';
 import Messenger from './views/Messenger';
 import Chatting from './views/Chatting';
 import CardReg from './views/CardReg';
+import CardView from './views/CardView';
 
 Vue.use(Router);
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/cardReg',
       name: 'cardReg',
       component: CardReg
+    },
+    {
+      path: '/cardView',
+      name: 'cardView',
+      component: CardView
     }
   ]
 });
