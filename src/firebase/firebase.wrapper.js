@@ -64,8 +64,13 @@ const dataModule = {
       time: new Date()
     });
   },
-  listenMessageRoom: () => {
-
+  listenMessageRoom: async (messageRoomId) => {
+    const data = (await resources.database.collection('MessageRooms').doc(messageRoomId).onSnapshot()).data();
+    console.log(messageRoomId, data);
+    return data.messages;
+  },
+  addTest: (obj) => {
+    resources.database.collection('Users').doc(obj.email).set(obj);
   }
 };
 
