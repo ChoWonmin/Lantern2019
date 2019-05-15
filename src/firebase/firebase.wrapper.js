@@ -22,6 +22,10 @@ const authModule = {
   facebookLogin: async() => await firebase.auth().signInWithPopup(providerFB)
 };
 
+const storageModule = {
+  upload: async (path, file) => await resources.storage.ref(path).put(file)
+};
+
 const dataModule = {
   hasUser: async (email) => {
     return (await resources.database.collection('Users').doc(email).get()).exists
@@ -44,8 +48,7 @@ const dataModule = {
     } catch (e) {
       return e;
     }
-  }
-  ,
+  },
   readMessageRooms: async (messageRooms) => {
     const rooms = await Promise.all(_.map(messageRooms, async e=> {
       const ref = resources.database.collection('MessageRooms').doc(e);
@@ -68,6 +71,9 @@ const dataModule = {
     const data = (await resources.database.collection('MessageRooms').doc(messageRoomId).onSnapshot()).data();
     console.log(messageRoomId, data);
     return data.messages;
+  },
+  uploadCard: async (image, hashtag) => {
+    await storageModule.upload('image/card/test', image);
   },
   addTest: (obj) => {
     resources.database.collection('Users').doc(obj.email).set(obj);

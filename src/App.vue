@@ -39,6 +39,13 @@ export default {
     }
   },
   methods: {
+  },
+  mounted() {
+
+    // hello.forEach(e=>{
+    //   this.$api.addTest(e);
+    // });
+
   }
 }
 </script>
