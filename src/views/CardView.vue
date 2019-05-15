@@ -3,9 +3,10 @@
         v-layout
             v-flex(xs12)
                 v-img(:src="require('../assets/profile01.jpg')" height="100%")
-                v-chip(label color= "yellow darken-3" text-color="white")
+                v-chip(v-for="hashtag in hashtags" label color= "yellow darken-3" text-color="white")
                     v-icon(left) label
-                    div.subheading.font-weight-bold Tags
+                    div.subheading.font-weight-bold {{hashtag}}
+
 
 </template>
 
@@ -15,17 +16,19 @@
         components: {
             Header
         },
-
         data() {
             return {
+                hashtags: ["a", "b", "c", "d", "e", "g", "h"],
+                cardID: undefined
             }
+        },
+        async mounted() {
+            this.cardID = this.$route.params.cardID;
+            this.hashtags = await this.$api.readHashtagByCardID();
         }
     }
 </script>
 
 <style scoped lang="sass">
-    .tag-text
 
 </style>
-
-

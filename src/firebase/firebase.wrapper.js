@@ -27,6 +27,9 @@ const storageModule = {
 };
 
 const dataModule = {
+  readHashtagByCardID: async (cardID) => {
+    return (await resources.database.collection('Cards').doc(cardID).get()).data();
+  },
   hasUser: async (email) => {
     return (await resources.database.collection('Users').doc(email).get()).exists
   },
