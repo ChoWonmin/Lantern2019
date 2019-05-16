@@ -7,6 +7,7 @@ import Messenger from './views/Messenger';
 import Chatting from './views/Chatting';
 import CardReg from './views/CardReg';
 import CardView from './views/CardView';
+import MyPage from './views/MyPage';
 
 Vue.use(Router);
 
@@ -57,6 +58,11 @@ export default new Router({
       path: '/cardView',
       name: 'cardView',
       component: CardView
+    },
+    {
+      path: '/myPage/:id',
+      name: 'myPage',
+      component: MyPage
     }
   ]
 });
