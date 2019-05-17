@@ -80,18 +80,33 @@ const dataModule = {
     const ext = image.name.split('.').slice(-1).pop();
     const ref = resources.database.collection('Cards');
 
+    const doc = await ref.add({});
+
     const obj = {
+      id: doc.id,
       content: '',
       extension: ext,
       hashtags: hashtag,
       lantern: email,
       region: region
     };
-    const doc = await ref.add(obj);
-
-    ref.doc(doc.id).set({id:doc.id, photo: `${doc.id}.${ext}`});
+    ref.doc(doc.id).set(obj);
     storageModule.upload(`image/card/${doc.id}`, image);
     resources.database.collection('Users').doc(email).collection('cards').doc(doc.id).set({id: doc.id});
+
+    const hashtagRef = resources.database.collection('Hashtags');
+    _.forEach(hashtag, async e=>{
+      const val = (await hashtagRef.doc(e).get()).data();
+
+      if (val===undefined) {
+        hashtagRef.doc(e).set({
+          dislikeCount: 0,
+          name: e,
+          likeCount: 0
+        });
+      }
+    });
+
 
   },
   addTest: (obj) => {
