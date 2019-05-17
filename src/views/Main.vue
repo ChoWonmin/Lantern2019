@@ -1,10 +1,9 @@
 <template lang="pug">
-  v-container
-    v-layout(fill-height column)
+  v-container(fill-height)
+    v-layout(column)
       Search
       .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
-        v-card(width="100%" height="100%" v-bind:class="getSwipeDirection").swiper-card
-          v-img(:src="imageSrc" height="100%")
+        v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
 </template>
 
 <script>
@@ -62,6 +61,8 @@ export default {
   width: 100%
   height: 100%
   overflow: hidden
+  display: flex
+  justify-content: center
   .swiper-card
     &.left
       transform: translate(-400px)
