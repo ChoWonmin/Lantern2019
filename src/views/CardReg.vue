@@ -35,8 +35,12 @@ export default {
     detectFiles(files) {
       this.file = files[0];
     },
-    sendCard() {
-      this.$api.uploadCard(this.file, this.hashtages);
+    async sendCard() {
+
+      if (this.file !== undefined) {
+        await this.$api.uploadCard(this.file, this.hashtages, this.$user.email, this.$user.region);
+      }
+
     }
   },
   computed: {

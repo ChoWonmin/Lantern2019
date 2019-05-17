@@ -75,8 +75,22 @@ const dataModule = {
     console.log(messageRoomId, data);
     return data.messages;
   },
-  uploadCard: async (image, hashtag) => {
-    await storageModule.upload('image/card/test', image);
+  uploadCard: async (image, hashtag, email, region) => {
+
+    const ext = image.name.split('.').slice(-1).pop();
+    const ref = resources.database.collection('Cards');
+
+    const obj = {
+      content: '',
+      extension: ext,
+      hashtags: hashtag,
+      lantern: email,
+      region: region
+    };
+    const doc = await ref.add(obj);
+
+    await ref.doc(doc.id).set({id:doc.id, photo: `${doc.id}.${ext}`});
+    await storageModule.upload(`image/card/${doc.id}`, image);
   },
   addTest: (obj) => {
     resources.database.collection('Users').doc(obj.email).set(obj);
