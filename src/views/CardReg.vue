@@ -37,12 +37,11 @@ export default {
     },
     async sendCard() {
 
-      this.$api.addTest(this.hashtages[0].text, this.file);
-      // const hashtag = this.hashtages.filter(e=>e.active===true).map(e=>e.text);
-      //
-      // if (this.file !== undefined) {
-      //   await this.$api.uploadCard(this.file, hashtag, this.$user.email, this.$user.region);
-      // }
+      const hashtag = this.hashtages.filter(e=>e.active===true).map(e=>e.text);
+
+      if (this.file !== undefined) {
+        await this.$api.uploadCard(this.file, hashtag, this.$user.email, this.$user.region);
+      }
 
       this.$router.push({name:'main'});
     }

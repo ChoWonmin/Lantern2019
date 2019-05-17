@@ -31,10 +31,12 @@ export default {
     async swipe (direction) {
       switch (direction) {
         case 'left':
+          this.$api.updateHashtag(this.cards[this.currInd].hashtags, true, this.$user.email);
           this.swipeDirection = direction;
           await this.updateMain();
           break;
         case 'right':
+          this.$api.updateHashtag(this.cards[this.currInd].hashtags, false, this.$user.email);
           this.swipeDirection = direction;
           await this.updateMain();
           break;
@@ -43,7 +45,8 @@ export default {
   },
   async mounted() {
     this.cards = await this.$api.readCards();
-    this.imageSrc = await this.$storage.getUrl(`image/card/${this.cards[this.currInd].id}`);
+    this.currCard = this.cards[this.currInd];
+    this.imageSrc = await this.$storage.getUrl(`image/card/${this.currCard.id}`);
   },
   computed: {
     getImageSrc() {

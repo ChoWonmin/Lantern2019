@@ -113,11 +113,62 @@ const dataModule = {
     (await resources.database.collection('Cards').limit(10).get()).forEach(e=>res.push(e.data()));
     return res;
   },
-  updateHashtag: (hashtags, like) => {
-    _.forEach(hashtags, async e=>{
-      const doc = (await resources.database.collection('Hashtags').doc(e)).data();
-    });
+  updateHashtag: async (hashtags, like, email) => {
 
+    console.error(hashtags);
+    const userRef = resources.database.collection('Users').doc(email);
+
+    _.forEach(hashtags, async e => {
+      const doc = (await resources.database.collection('Hashtags').doc(e).get());
+
+      if (like) {
+        if (doc.exists===true) {
+          resources.database.collection('Hashtags').doc(e).update({
+            likeCount: doc.data().likeCount+1
+          });
+        } else {
+          resources.database.collection('Hashtags').doc(e).set({
+            likeCount: 1,
+            dislikeCount: 0
+          });
+        }
+
+        const lhDoc = (await userRef.collection('likeHashtags').doc(e).get());
+        if (lhDoc.exists) {
+          userRef.collection('likeHashtags').doc(e).update({
+            count: lhDoc.data().count+1
+          });
+        } else {
+          userRef.collection('likeHashtags').doc(e).set({
+            name: e,
+            count: 1
+          });
+        }
+      } else { // dislike
+        if (doc.exists===true) {
+          resources.database.collection('Hashtags').doc(e).update({
+            dislikeCount: doc.data().count+1
+          });
+        } else {
+          resources.database.collection('Hashtags').doc(e).set({
+            likeCount: 0,
+            dislikeCount: 1
+          });
+        }
+
+        const dlhDoc = (await userRef.collection('disLikeHashtags').doc(e).get());
+        if (dlhDoc.exists) {
+          userRef.collection('disLikeHashtags').doc(e).update({
+            count: dlhDoc.data().count+1
+          });
+        } else {
+          userRef.collection('disLikeHashtags').doc(e).set({
+            name: e,
+            count: 1
+          });
+        }
+      }
+    });
   },
   addTest: (email, file) => {
     storageModule.upload(`image/user/${email}`, file);

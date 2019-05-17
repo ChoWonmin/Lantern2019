@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/Lantern2019/js/chunk-vendors.f65a2a90.js"
   },
   {
-    "revision": "9bd50f59a18e10581ea3",
-    "url": "/Lantern2019/js/app.c1476626.js"
+    "revision": "76d1e8610ca812d06303",
+    "url": "/Lantern2019/js/app.ec233d1a.js"
   },
   {
     "revision": "ada8a924029c529793ed",
     "url": "/Lantern2019/js/about.f526c89a.js"
   },
   {
-    "revision": "ffd25994f1ff44d636a46beb76b8773e",
+    "revision": "37a5de95ee7568328e8d7e0321dd834f",
     "url": "/Lantern2019/index.html"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/Lantern2019/css/chunk-vendors.27b7b10c.css"
   },
   {
-    "revision": "9bd50f59a18e10581ea3",
-    "url": "/Lantern2019/css/app.1130215b.css"
+    "revision": "76d1e8610ca812d06303",
+    "url": "/Lantern2019/css/app.a0472dea.css"
   }
 ];
