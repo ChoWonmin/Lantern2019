@@ -3,13 +3,15 @@
     v-layout(column)
       v-flex
         v-card(width="100%")
-          v-img(:src="getImageSrc" width="100%" min-height="50vh")
-        v-btn(@click="$refs.inputUpload.click()") upload
+          v-img(:src="getImageSrc" width="100%" max-height="50vh")
+        v-btn(@click="$refs.inputUpload.click()") image
           input(type="file" ref="inputUpload" v-show="false" accept="image/*" @change="detectFiles($event.target.files)")
       v-flex
         v-chip(v-for="hashtag in getHastage" v-model="hashtag.active" close) {{hashtag.text}}
       v-flex
         v-text-field(solo v-model="hashtageInput" label="hashtag" @change="sendHashtage")
+      v-flex
+        v-btn(@click="sendCard") Send
 </template>
 
 <script>
@@ -32,6 +34,9 @@ export default {
     },
     detectFiles(files) {
       this.file = files[0];
+    },
+    sendCard() {
+      this.$api.uploadCard(this.file, this.hashtages);
     }
   },
   computed: {

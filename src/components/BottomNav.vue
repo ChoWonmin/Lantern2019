@@ -6,8 +6,11 @@
       v-icon view_list
     v-btn(to="messenger")
       v-icon sms
+    v-btn(to="cardReg")
+      v-icon add
     v-btn
       v-icon home
+
 </template>
 
 <script>
