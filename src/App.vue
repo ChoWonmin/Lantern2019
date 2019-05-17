@@ -20,6 +20,7 @@ Vue.prototype.$user = {
   email: '0108257@gmail.com',
   login: true,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
+  region: 'Seoul',
   displayName: '',
   gender: '',
   age: -1,
