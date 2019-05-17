@@ -89,8 +89,10 @@ const dataModule = {
     };
     const doc = await ref.add(obj);
 
-    await ref.doc(doc.id).set({id:doc.id, photo: `${doc.id}.${ext}`});
-    await storageModule.upload(`image/card/${doc.id}`, image);
+    ref.doc(doc.id).set({id:doc.id, photo: `${doc.id}.${ext}`});
+    storageModule.upload(`image/card/${doc.id}`, image);
+    resources.database.collection('Users').doc(email).collection('cards').doc(doc.id).set({id: doc.id});
+
   },
   addTest: (obj) => {
     resources.database.collection('Users').doc(obj.email).set(obj);
