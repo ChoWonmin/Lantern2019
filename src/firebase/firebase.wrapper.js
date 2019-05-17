@@ -23,7 +23,8 @@ const authModule = {
 };
 
 const storageModule = {
-  upload: async (path, file) => await resources.storage.ref(path).put(file)
+  upload: async (path, file) => await resources.storage.ref(path).put(file),
+  getUrl: async (path) => await resources.storage.ref(path).getDownloadURL()
 };
 
 const dataModule = {
@@ -106,12 +107,15 @@ const dataModule = {
         });
       }
     });
-
-
+  },
+  readCards: async () => {
+    const res = [];
+    (await resources.database.collection('Cards').limit(10).get()).forEach(e=>res.push(e.data()));
+    return res;
   },
   addTest: (obj) => {
     resources.database.collection('Users').doc(obj.email).set(obj);
   }
 };
 
-export { authModule, resources, dataModule};
+export { authModule, resources, dataModule, storageModule};

@@ -11,13 +11,14 @@ import Vue from 'vue';
 import _ from 'lodash';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
-import { authModule, dataModule } from './firebase/firebase.wrapper';
+import { authModule, dataModule, storageModule } from './firebase/firebase.wrapper';
 
 Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
+Vue.prototype.$storage = storageModule;
 Vue.prototype.$user = {
-  email: '0108257@gmail.com',
+  email: 'DASH@gmail.com',
   login: true,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
   region: 'Seoul',
