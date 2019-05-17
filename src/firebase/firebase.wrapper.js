@@ -113,9 +113,15 @@ const dataModule = {
     (await resources.database.collection('Cards').limit(10).get()).forEach(e=>res.push(e.data()));
     return res;
   },
-  addTest: (obj) => {
-    resources.database.collection('Users').doc(obj.email).set(obj);
-  }
+  updateHashtag: (hashtags, like) => {
+    _.forEach(hashtags, async e=>{
+      const doc = (await resources.database.collection('Hashtags').doc(e)).data();
+    });
+
+  },
+  addTest: (email, file) => {
+    storageModule.upload(`image/user/${email}`, file);
+  },
 };
 
 export { authModule, resources, dataModule, storageModule};
