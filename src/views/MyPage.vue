@@ -8,12 +8,12 @@
                 v-card
                     v-container(grid-list-sm fluid).pa-0
                         v-layout(row wrap)
-                            v-flex(v-for="n in 9" xs4 d-flex)
+                            v-flex(v-for="n in cardCount" xs4 d-flex)
                                 v-card(flat tile class="d-flex")
                                     <!--v-img(:src="`https://picsum.photos/500/300?image=${n * 5 + 10}`" :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"-->
                                     <!--aspect-ratio="1" class="grey lighten-2")-->
-                                    v-img(:src="require('../assets/profile01.jpg')" lazy-src="require('../assets/default-image.jpg')" aspect-ratio="1" class="grey lighten-2")
-                                                    v-layout(fill-height align-center justify-center ma-0)
+                                    v-img(:src="require('../assets/profile01.jpg')" lazy-src="require('../assets/default_image.jpg')" aspect-ratio="1" class="grey lighten-2")
+                                        v-layout(fill-height align-center justify-center ma-0)
 
 
 
@@ -30,11 +30,15 @@
         },
         data() {
             return {
-                id: ""
+                id: "",
+                cards: [],
+                cardCount: 0
             }
         },
         async mounted() {
             this.id = this.$route.params.id;
+            this.cards = await this.$api.readCardByLanternID(this.id);
+            this.cardCount = this.cards.length;
         }
     }
 </script>
