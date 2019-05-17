@@ -8,7 +8,7 @@
       v-icon sms
     v-btn(to="cardReg")
       v-icon add
-    v-btn
+    v-btn(to="myPage")
       v-icon home
 
 </template>
