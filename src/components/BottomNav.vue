@@ -6,7 +6,9 @@
       v-icon view_list
     v-btn(to="messenger")
       v-icon sms
-    v-btn
+    <!--v-btn(to="cardReg")-->
+      <!--v-icon add-->
+    v-btn(to="myPage")
       v-icon home
 
 </template>

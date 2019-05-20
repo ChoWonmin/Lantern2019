@@ -60,7 +60,7 @@ export default new Router({
       component: CardView
     },
     {
-      path: '/myPage/:id',
+      path: '/myPage',
       name: 'myPage',
       component: MyPage
     }
