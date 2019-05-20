@@ -3,16 +3,17 @@
     v-layout
       v-flex(xs12)
         ListViewer(title="나와 가장 잘 맞는 랜턴" :items="list1")
-        ListViewer(title="해시태그 기반 카드" :items="list2")
+        CardListViewer(title="해시태그 기반 카드" :items="list1")
         ListViewer(title="지역 별 인기 랜턴" :items="list3")
 </template>
 
 <script>
 import ListViewer from '../components/ListViewer';
+import CardListViewer from '../components/CardListViewer';
 
 export default {
     components: {
-    ListViewer
+    ListViewer, CardListViewer
     },
     data() {
         return {

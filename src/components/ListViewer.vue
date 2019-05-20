@@ -14,13 +14,13 @@
             v-card-title
               v-layout(column)
                 .headline.name {{lantern.name}}
-                div.font-weight-light.body-2
+                div.body-2.font-weight-regular
                   .infomation {{`( ${lantern.age}, ${lantern.sex} )`}}
                 v-layout
                   v-icon(small) language
-                  div.font-weight-light.font-italic.caption {{lantern.lang.join(' ')}}
+                  div.caption {{lantern.lang.join(' ')}}
                     .keywords
-                v-layout
+                v-layout￼
                   v-icon(small color = "yellow") star
                   div 4.5
                     //.rating {{lantern.rating}}
@@ -77,7 +77,7 @@ export default {
         text-indent: 10px
 .lantern-list
     .lantern-content
-        max-height: 150px
+        max-height: 130px
 .icon-more
     height: 30px
     display: flex
