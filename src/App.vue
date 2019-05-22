@@ -3,7 +3,10 @@
     Header
     .content-wrapper
       .alart-wrapper
-        v-avatar
+        .profile-wrapper
+          .profile
+            .profile-image
+        .message-wrapper
       router-view.pa-0.ma-0
     BottomNav
 </template>
@@ -64,6 +67,7 @@ $content-height : calc(100vh - 126px)
 
 .alart-wrapper
   position: absolute
+  display: flex
   left: 6px
   top: 24px
   width: calc(100% - 12px)
@@ -74,5 +78,14 @@ $content-height : calc(100vh - 126px)
   -webkit-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
   -moz-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
   box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  padding: 4px 12px
+  .profile-wrapper
+    width: 76px
+    height: 100%
+    background-color: red
+  .message-wrapper
+    flex: 1
+    height: 100%
+    background-color: coral
 
 </style>
