@@ -8,7 +8,7 @@
       v-icon sms
     v-btn(to="cardReg")
       v-icon add
-    v-btn(to="myPage")
+    v-btn(@click="$router.push({name:'myPage', params: {id: $user.email}})")
       v-icon home
 
 </template>
