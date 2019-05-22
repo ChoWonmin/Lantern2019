@@ -12,6 +12,9 @@
             .sub-box.like
               .title-box Like
           v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
+
+      <!--v-overlay(:value="overlay" @click="closeOverlay()")-->
+      <!--v-img(:src="require('../assets/그룹 3.png')").guide-img-->
 </template>
 
 <script>
