@@ -2,6 +2,8 @@
   v-app.app-root
     Header
     .content-wrapper
+      .alart-wrapper
+        v-avatar
       router-view.pa-0.ma-0
     BottomNav
 </template>
@@ -37,17 +39,13 @@ export default {
   data () {
     return {
       email: undefined,
-      password: undefined
+      password: undefined,
+      messageAlert: true
     }
   },
   methods: {
   },
   mounted() {
-
-    // hello.forEach(e=>{
-    //   this.$api.addTest(e);
-    // });
-
   }
 }
 </script>
@@ -63,5 +61,18 @@ $content-height : calc(100vh - 126px)
 
 .app-root
   overflow: hidden
+
+.alart-wrapper
+  position: absolute
+  left: 6px
+  top: 24px
+  width: calc(100% - 12px)
+  height: 72px
+  background-color: #fdfdfd
+  z-index: 100
+  border-radius: 4px
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
 
 </style>
