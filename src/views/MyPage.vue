@@ -6,13 +6,13 @@
                     v-img(src="https://cdn.vuetifyjs.com/images/parallax/material.jpg").backimg
                 .profile
                     v-avatar(size="120px").avatar-wrapper
-                        v-img(:src="require('../assets/profile01.jpg')" alt="Avatar")
+                        v-img(:src="profilePhoto" alt="Avatar")
                 .detail
                     v-text.name.title {{user.name}}
                     v-text.age &nbsp;( {{user.age}} , {{user.sex}} )<br>
                     v-text.lang
                         v-icon(small) language
-                        v-text(v-for="n in user.lang.length" ) {{user.lang[n]}}
+                        v-text &nbsp; {{user.lang.join('  ')}}
                 .lantern-switch-wrapper
                     .lantern-switch
                         v-switch(v-model="isLantern" color="yellow darken-3" @change="onOffLantern()")
@@ -22,7 +22,7 @@
                 v-card
                     v-container(grid-list-sm fluid).pa-0
                         v-layout(row wrap)
-                            v-flex(v-for="n in cardCount" xs4 d-flex)
+                            v-flex(v-for="(card, index) in cards" xs4 d-flex)
                                 v-card(flat tile class="d-flex")
                                     v-img(:src="require('../assets/profile01.jpg')" lazy-src="require('../assets/default-image.jpg')" aspect-ratio="1" class="grey lighten-2")
                                                     v-layout(fill-height align-center justify-center ma-0)
@@ -39,6 +39,7 @@
             return {
                 userID: "",
                 user: {},
+                profilePhoto: require('../assets/profile01.jpg'),
                 cards: [],
                 cardCount: 9,
                 isLantern: false
@@ -46,10 +47,11 @@
         },
         async mounted() {
             this.userID = this.$route.params.id;
-            this.userID = "HAnana@gmail.com";
+            this.userID = 'DASH@gmail.com';
             this.user = await this.$api.readUser(this.userID);
-            //this.cards = await this.$api.readCardsByUserID(this.userID);
-           // this.cardCount = this.cards.length;
+            this.profilePhoto = await this.$storage.getUrl(`image/user/${this.userID}`);
+
+            this.cards = await this.$api.readCardsByUserID(this.userID);
             this.isLantern = this.user.isLantern;
         },
         methods: {
@@ -107,5 +109,6 @@
             color: #757575
             &.active
                 color: #ffb300
+                font-size: 25px
 
 </style>

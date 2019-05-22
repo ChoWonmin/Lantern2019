@@ -52,7 +52,7 @@
         },
         methods: {
             openList(){
-                this.listCount += 10;
+                this.listCount += 5;
             },
             async getProfileUrl(email) {
                 return await this.$storage.getUrl(`image/user/${email}`);

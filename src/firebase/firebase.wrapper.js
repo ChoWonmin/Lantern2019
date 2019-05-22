@@ -28,6 +28,18 @@ const storageModule = {
 };
 
 const dataModule = {
+  readCardsByUserID: async (userID) => {
+
+    console.log(userID, 'asdadasdsadasd');
+    const res = [];
+    (await resources.database.collection('Users').doc(userID).collection('cards').get())
+        .forEach(doc => {
+          console.error(doc.data());
+          res.push(doc.data())
+    });
+
+    return res;
+  },
   readHashtagByCardID: async (cardID) => {
     return (await resources.database.collection('Cards').doc(cardID).get()).data();
   },
