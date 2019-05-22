@@ -2,7 +2,8 @@
   v-container(fill-height)
     v-layout(column)
       v-layout
-        v-autocomplete(box background-color = "white" full-width :items="states" :placeholder ="$user.region" item-text="name" label="location" flat single-line)
+        v-combobox(box background-color = "white" full-width :items="states"
+        :placeholder ="$user.region" label="location" flat v-model="region" @change="updateNewCards")
       .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
         .box
           .sub-box.dislike
@@ -32,10 +33,17 @@ export default {
       states: [
         'Seoul, Republic of Korea', 'Osaka, Japan', 'Tokyo, Japan', 'Barcelona, Spain',
         'Taipei, Taiwan', 'Jeju, Republic of Korea', 'London, UK'
-      ]
+      ],
+      region: this.$user.region
     };
   },
   methods: {
+    async updateNewCards() {
+      this.currInd = 0;
+      this.cards = await this.$api.readCards(this.region);
+      this.currCard = this.cards[this.currInd];
+      this.imageSrc = await this.$storage.getUrl(`image/card/${this.currCard.id}`);
+    },
     async updateMain () {
       this.currInd += 1;
       this.imageSrc = await this.$storage.getUrl(`image/card/${this.cards[this.currInd].id}`);
@@ -57,9 +65,7 @@ export default {
     }
   },
   async mounted() {
-    this.cards = await this.$api.readCards();
-    this.currCard = this.cards[this.currInd];
-    this.imageSrc = await this.$storage.getUrl(`image/card/${this.currCard.id}`);
+    await this.updateNewCards();
   },
   computed: {
     getImageSrc() {

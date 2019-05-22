@@ -29,15 +29,11 @@ const storageModule = {
 
 const dataModule = {
   readCardsByUserID: async (userID) => {
-
-    console.log(userID, 'asdadasdsadasd');
     const res = [];
     (await resources.database.collection('Users').doc(userID).collection('cards').get())
         .forEach(doc => {
-          console.error(doc.data());
           res.push(doc.data())
     });
-
     return res;
   },
   readHashtagByCardID: async (cardID) => {
@@ -120,9 +116,9 @@ const dataModule = {
       }
     });
   },
-  readCards: async () => {
+  readCards: async (region) => {
     const res = [];
-    (await resources.database.collection('Cards').limit(10).get()).forEach(e=>res.push(e.data()));
+    (await resources.database.collection('Cards').where('region','==',region).limit(10).get()).forEach(e=>res.push(e.data()));
     return res;
   },
   updateHashtag: async (hashtags, like, email) => {
