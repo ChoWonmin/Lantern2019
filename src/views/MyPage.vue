@@ -8,9 +8,13 @@
                     v-avatar(size="120px").avatar-wrapper
                         v-img(:src="profileImg" alt="Avatar")
                 .detail
-                    v-text.name.title {{user.name}}
-                    v-text.age &nbsp;( {{user.age}} , {{user.sex}} )<br>
-                    v-text.lang
+                    .name-age
+                        v-text.name.title {{user.name}}
+                        v-text.age.title &nbsp;( {{user.age}} , {{user.sex}} )<br>
+                    .region
+                        v-icon(small) location_on
+                        v-text &nbsp; {{user.region}}<br>
+                    .lang
                         v-icon(small) language
                         v-text &nbsp; {{user.lang.join('  ')}}
                 .lantern-switch-wrapper
@@ -19,13 +23,13 @@
                     .lantern-text(v-bind:class="{active: isLantern}") {{getLanternText}}
 
 
-                v-card
+                v-card.cards-wrapper
                     v-container(grid-list-sm fluid).pa-0
                         v-layout(row wrap)
-                            v-flex(v-for="(card, index) in cards" xs4 d-flex)
+                            v-flex(v-for="img in cardImages" xs4 d-flex)
                                 v-card(flat tile class="d-flex")
-                                    v-img(:src="cardImg" lazy-src="cardImg" aspect-ratio="1" class="grey lighten-2")
-                                                    v-layout(fill-height align-center justify-center ma-0)
+                                    v-img(:src="img" aspect-ratio="1" class="grey lighten-2")
+                                        v-layout(fill-height align-center justify-center ma-0)
 </template>
 
 <script>
@@ -39,30 +43,30 @@
             return {
                 userID: "",
                 user: {},
-                profileImg: require('../assets/profile01.jpg'),
+                profileImg: '',
                 cards: [],
-                cardImg:  require('../assets/profile01.jpg'),
-                isLantern: false
+                isLantern: false,
+                cardImages: []
             }
         },
         async mounted() {
             this.userID = this.$route.params.id;
-            this.userID = 'DASH@gmail.com';
+            //this.userID = 'DASH@gmail.com';
             this.user = await this.$api.readUser(this.userID);
             this.profileImg = await this.$storage.getUrl(`image/user/${this.userID}`);
-
             this.cards = await this.$api.readCardsByUserID(this.userID);
+            this.cards.forEach(async (e)=>{
+               this.cardImages.push(
+                   await this.$storage.getUrl(`image/card/${e.id}`)
+               );
+            });
+
             this.isLantern = this.user.isLantern;
         },
         methods: {
             onOffLantern() {
-                this.isLantern = !this.isLantern;
                 this.$api.onOffLantern(this.isLantern);
-            },
-            getCardImageURL() {
-
             }
-
         },
         computed: {
             getLanternText() {
@@ -88,17 +92,27 @@
             top: -60px
             z-index: 100
     .detail
-        height: 130px
+        height: 110px
         text-align: center
-        .age.lang
-            font-weight: 300
+        .name-age
+            padding-top: 10px
+            padding-bottom: 10px
+        .region
+            padding-bottom: 10px
+            font-weight: 400
+            color: grey
+        .lang
+            padding-bottom: 10px
+            font-weight: 400
+            color: grey
+
 
     .lantern-switch-wrapper
-        //background-color: #ffb300
+        background-color: #e0e0e0
         height: 60px
         display: flex
-        padding-left: 20px
-        padding-right: 20px
+        padding-left: 30px
+        padding-right: 30px
         .lantern-switch
             flex: 1
             align-items: center
@@ -114,5 +128,8 @@
             &.active
                 color: #ffb300
                 font-size: 25px
+
+    .cards-wrapper
+        padding-top: 20px
 
 </style>
