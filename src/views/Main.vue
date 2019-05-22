@@ -3,6 +3,11 @@
     v-layout(column)
       Search
       .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
+        .box
+          .sub-box.dislike
+            .title-box Dislike
+          .sub-box.like
+            .title-box Like
         v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
 </template>
 
@@ -64,8 +69,41 @@ export default {
   width: 100%
   height: 100%
   overflow: hidden
-  display: flex
   justify-content: center
+  position: relative
+  display: flex
+  .box
+    position: absolute
+    width: 100%
+    height: 100%
+    /*background-color: #4e4e4e*/
+    /*opacity: 0.5*/
+    z-index: 10
+    display: flex
+    .dislike
+      &:active
+        .title-box
+          display: block
+          transform: rotate(-30deg)
+    .like
+      &:active
+        .title-box
+          display: block
+          transform: rotate(30deg)
+    .sub-box
+      flex: 1
+      padding-top: 48px
+      height: 100%
+      .title-box
+        text-align: center
+        line-height: 48px
+        flex: 1
+        border-radius: 4px
+        font-size: 40px
+        font-weight: bold
+        border: solid 4px #ffd600
+        color: #ffd600
+        display: none
   .swiper-card
     &.left
       transform: translate(-400px)
