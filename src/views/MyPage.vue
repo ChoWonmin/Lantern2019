@@ -6,7 +6,7 @@
                     v-img(src="https://cdn.vuetifyjs.com/images/parallax/material.jpg").backimg
                 .profile
                     v-avatar(size="120px").avatar-wrapper
-                        v-img(:src="profilePhoto" alt="Avatar")
+                        v-img(:src="profileImg" alt="Avatar")
                 .detail
                     v-text.name.title {{user.name}}
                     v-text.age &nbsp;( {{user.age}} , {{user.sex}} )<br>
@@ -24,7 +24,7 @@
                         v-layout(row wrap)
                             v-flex(v-for="(card, index) in cards" xs4 d-flex)
                                 v-card(flat tile class="d-flex")
-                                    v-img(:src="require('../assets/profile01.jpg')" lazy-src="require('../assets/default-image.jpg')" aspect-ratio="1" class="grey lighten-2")
+                                    v-img(:src="cardImg" lazy-src="cardImg" aspect-ratio="1" class="grey lighten-2")
                                                     v-layout(fill-height align-center justify-center ma-0)
 </template>
 
@@ -39,9 +39,9 @@
             return {
                 userID: "",
                 user: {},
-                profilePhoto: require('../assets/profile01.jpg'),
+                profileImg: require('../assets/profile01.jpg'),
                 cards: [],
-                cardCount: 9,
+                cardImg:  require('../assets/profile01.jpg'),
                 isLantern: false
             }
         },
@@ -49,16 +49,20 @@
             this.userID = this.$route.params.id;
             this.userID = 'DASH@gmail.com';
             this.user = await this.$api.readUser(this.userID);
-            this.profilePhoto = await this.$storage.getUrl(`image/user/${this.userID}`);
+            this.profileImg = await this.$storage.getUrl(`image/user/${this.userID}`);
 
             this.cards = await this.$api.readCardsByUserID(this.userID);
             this.isLantern = this.user.isLantern;
         },
         methods: {
             onOffLantern() {
-                //if()
-                //this.$api.onOffLantern()
+                this.isLantern = !this.isLantern;
+                this.$api.onOffLantern(this.isLantern);
+            },
+            getCardImageURL() {
+
             }
+
         },
         computed: {
             getLanternText() {
