@@ -1,14 +1,17 @@
 <template lang="pug">
   v-container(fill-height)
     v-layout(column)
-      Search
-      .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
-        .box
-          .sub-box.dislike
-            .title-box Dislike
-          .sub-box.like
-            .title-box Like
-        v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
+      v-layout
+        v-autocomplete(box background-color = "white" full-width :items="states" placeholder ="지역을 입력하세요" item-text="name" label="location")
+      v-layout(column)
+        Search
+        .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
+          .box
+            .sub-box.dislike
+              .title-box Dislike
+            .sub-box.like
+              .title-box Like
+          v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
 </template>
 
 <script>
@@ -24,7 +27,11 @@ export default {
       cards: [],
       currInd: 0,
       imageSrc: require('../assets/profile01.jpg'),
-      swipeDirection: 'none'
+      swipeDirection: 'none',
+      states: [
+        'Seoul, Republic of Korea', 'Osaka, Japan', 'Tokyo, Japan', 'Barcelona, Spain',
+        'Taipei, Taiwan', 'Jeju, Republic of Korea', 'London, UK'
+      ]
     };
   },
   methods: {
@@ -78,7 +85,7 @@ export default {
     height: 100%
     /*background-color: #4e4e4e*/
     /*opacity: 0.5*/
-    z-index: 10
+    z-index: 1
     display: flex
     .dislike
       &:active

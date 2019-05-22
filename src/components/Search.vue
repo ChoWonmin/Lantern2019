@@ -1,6 +1,5 @@
 <template lang="pug">
-    v-layout
-      v-autocomplete(box background-color = "white" full-width :items="states" placeholder ="지역을 입력하세요" item-text="name" label="location")
+    .content
 </template>
 
 <script>
