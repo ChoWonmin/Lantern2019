@@ -3,15 +3,13 @@
     v-layout(column)
       v-layout
         v-autocomplete(box background-color = "white" full-width :items="states" placeholder ="지역을 입력하세요" item-text="name" label="location")
-      v-layout(column)
-        Search
-        .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
-          .box
-            .sub-box.dislike
-              .title-box Dislike
-            .sub-box.like
-              .title-box Like
-          v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
+      .swiper(v-touch="{left: () => swipe('left'), right: () => swipe('right'), up: () => swipe('up'),down: () => swipe('down')}")
+        .box
+          .sub-box.dislike
+            .title-box Dislike
+          .sub-box.like
+            .title-box Like
+        v-img(:src="imageSrc" min-height="100%" v-bind:class="getSwipeDirection").swiper-card
 
       <!--v-overlay(:value="overlay" @click="closeOverlay()")-->
       <!--v-img(:src="require('../assets/그룹 3.png')").guide-img-->

@@ -4,20 +4,24 @@ self.__precacheManifest = [
     "url": "/Lantern2019/robots.txt"
   },
   {
-    "revision": "d07d0ffda3d9a8c8bc3a",
+    "revision": "792419e5df0a536c1807",
     "url": "/Lantern2019/js/chunk-vendors.edcb3752.js"
   },
   {
-    "revision": "452de0c996d5d17894a0",
-    "url": "/Lantern2019/js/app.db651583.js"
+    "revision": "0192fd0bf57cbec46fcf",
+    "url": "/Lantern2019/js/app.a02d5bff.js"
   },
   {
     "revision": "ada8a924029c529793ed",
     "url": "/Lantern2019/js/about.f526c89a.js"
   },
   {
-    "revision": "6eff01f6c4472c00d6d0a1b3c498a3b7",
+    "revision": "e9d1c98c2c0a2c71cb21ca9df740f7ba",
     "url": "/Lantern2019/index.html"
+  },
+  {
+    "revision": "327b6e0969b8e4ac9f3ad9c4086545a0",
+    "url": "/Lantern2019/img/자산 1.327b6e09.svg"
   },
   {
     "revision": "1a9dca4e8da9be313b25fe7aa3d983e5",
@@ -28,15 +32,11 @@ self.__precacheManifest = [
     "url": "/Lantern2019/img/logo_lantern.195b0e1e.svg"
   },
   {
-    "revision": "0485de75dad74c6366ccbf0b8d65edd8",
-    "url": "/Lantern2019/img/lanternlogosimple2.0485de75.svg"
+    "revision": "792419e5df0a536c1807",
+    "url": "/Lantern2019/css/chunk-vendors.52e17a8b.css"
   },
   {
-    "revision": "d07d0ffda3d9a8c8bc3a",
-    "url": "/Lantern2019/css/chunk-vendors.2e109f8b.css"
-  },
-  {
-    "revision": "452de0c996d5d17894a0",
-    "url": "/Lantern2019/css/app.53b4e197.css"
+    "revision": "0192fd0bf57cbec46fcf",
+    "url": "/Lantern2019/css/app.5808c782.css"
   }
 ];
