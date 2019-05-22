@@ -20,7 +20,7 @@
                   v-icon(small) language
                   div.caption {{lantern.lang.join(' ')}}
                     .keywords
-                v-layout￼
+                v-layout
                   v-icon(small color = "yellow") star
                   div 4.5
                     //.rating {{lantern.rating}}
