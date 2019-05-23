@@ -7,6 +7,8 @@
           .profile
             .profile-image
         .message-wrapper
+          .name-text won.min.cho
+          .message-text 그냥 밑에 하자
       router-view.pa-0.ma-0
     BottomNav
 </template>
@@ -83,9 +85,30 @@ $content-height : calc(100vh - 126px)
     width: 76px
     height: 100%
     background-color: red
+    display: flex
+    align-items: center
+    justify-content: center
+    .profile
+      width: 54px
+      height: 54px
+      border-radius: 100%
+      background-color: #ffd600
   .message-wrapper
     flex: 1
     height: 100%
     background-color: coral
+    padding: 4px
+    .name-text
+      background-color: #0d47a1
+      width: 100%
+      height: 50%
+      font-weight: bold
+      font-size: 18px
+    .message-text
+      background-color: #00c853
+      width: 100%
+      height: 50%
+      font-weight: bold
+      font-size: 18px
 
 </style>
