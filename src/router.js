@@ -8,6 +8,7 @@ import Chatting from './views/Chatting';
 import CardReg from './views/CardReg';
 import CardView from './views/CardView';
 import MyPage from './views/MyPage';
+import SignUp from "./views/SignUp";
 
 Vue.use(Router);
 
@@ -63,6 +64,11 @@ export default new Router({
       path: '/myPage',
       name: 'myPage',
       component: MyPage
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: SignUp
     }
   ]
 });
