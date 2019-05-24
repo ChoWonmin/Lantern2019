@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from './views/Login.vue';
 import Main from './views/Main.vue';
 import LanternList from './views/LanternList.vue';
 import Messenger from './views/Messenger';
@@ -24,11 +23,6 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
     },
     {
       path: '/',

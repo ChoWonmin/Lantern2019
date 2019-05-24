@@ -1,16 +1,20 @@
 <template lang="pug">
   v-app.app-root
-    Header
-    .content-wrapper
-      .alart-wrapper
-        .profile-wrapper
-          .profile
-            .profile-image
-        .message-wrapper
-          .name-text won.min.cho
-          .message-text 그냥 밑에 하자
-      router-view.pa-0.ma-0
-    BottomNav
+    .basic(v-show="$isLogin")
+      Header
+      .content-wrapper
+        .alart-wrapper
+          .profile-wrapper
+            .profile
+              .profile-image
+          .message-wrapper
+            .name-text won.min.cho
+            .message-text 그냥 밑에 하자
+        router-view.pa-0.ma-0
+      BottomNav
+    .login-warpper(v-show="!$isLogin")
+      Login()
+
 </template>
 
 <script>
@@ -18,6 +22,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
+import Login from './components/Login';
 import { authModule, dataModule, storageModule } from './firebase/firebase.wrapper';
 import analytic from './analytics/analytic';
 
@@ -34,13 +39,15 @@ Vue.prototype.$user = {
   gender: '',
   age: -1,
 };
+Vue.prototype.$isLogin = false;
 Vue.prototype.$timeForm = (date) => `${date.getHours()} : ${date.getMinutes()}`;
 
 export default {
   name: 'App',
   components: {
     Header,
-    BottomNav
+    BottomNav,
+    Login
   },
   data () {
     return {
@@ -51,8 +58,8 @@ export default {
   },
   methods: {
   },
-  //    Fashion   Nightculture   Bibimbap   K-beauty   Koreafood   Site   Coffeeshop   BTS   K-pop
   mounted() {
+
     const list1 = [
       {
         name: 'Soju',
@@ -92,6 +99,34 @@ export default {
       },
       {
         name: 'K-pop',
+        count: 2
+      },
+      {
+        name: 'Kyongbokkung',
+        count: 2
+      },
+      {
+        name: 'Hanbok',
+        count: 2
+      },
+      {
+        name: 'Seoultower',
+        count: 2
+      },
+      {
+        name: 'Lotteworldtower',
+        count: 2
+      },
+      {
+        name: 'Nightview',
+        count: 2
+      },
+      {
+        name: 'Basketball',
+        count: 2
+      },
+      {
+        name: 'Sports',
         count: 2
       }
     ];

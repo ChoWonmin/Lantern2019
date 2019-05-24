@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container(align-center fill-height)
+  v-container(align-center fill-height).pa-0
     v-layout(column)
         v-img(:src="require('../assets/lantern_main.png')" min-height="750").background-wapper
             .buttons-wapper
