@@ -1,7 +1,9 @@
 <template lang="pug">
     v-container(align-center fill-height fluid style="overflow-y: scroll;")
-        v-layout
-
+        v-layout(wrap)
+            v-flex(xs12)
+                v-input(:messages="['Messages']" append-icon="close" prepend-icon="phone") Default Slot
+                v-input(:messages="['Messages']" append-icon="close" prepend-icon="phone") Default Slot
 </template>
 
 <script>

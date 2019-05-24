@@ -1,7 +1,7 @@
 <template lang="pug">
   v-container(align-center fill-height).pa-0
     v-layout(column)
-        v-img(:src="require('../assets/lantern_main.png')" min-height="750").background-wapper
+        v-img(:src="require('../assets/lantern_main.png')" min-height="810").background-wapper
             .buttons-wapper
               v-flex(@click="loginFacebook")
                 v-btn(color="#3b5998").font-weight-bold
@@ -30,6 +30,8 @@ export default {
         if(flag == null){
             alert("가입되었습니다!ㅊㅋㅊㅋ");
             this.$api.addUser(user.email, user.displayName);
+            this.$emit('changeIsLogin');
+            this.$router.push({name: 'main'});
         }
 
     },
@@ -39,6 +41,7 @@ export default {
       this.$user.email = res.user.email;
       this.$user.displayName = res.user.displayName;
       this.$user.login = true;
+      this.$emit('changeIsLogin');
       this.$router.push({name: 'main'});
     },
     async loginGoogle() {
@@ -47,7 +50,9 @@ export default {
       this.$user.email = res.user.email;
       this.$user.displayName = res.user.displayName;
       this.$user.login = true;
-      this.$router.push({name: 'main'});
+
+      this.$isLogin = true;
+        this.$router.push({name: 'main'});
     }
   }
 };

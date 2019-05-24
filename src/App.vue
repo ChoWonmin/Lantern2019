@@ -1,6 +1,6 @@
 <template lang="pug">
   v-app.app-root
-    .basic(v-show="$isLogin")
+    .basic(v-show="isLogin")
       Header
       .content-wrapper
         .alart-wrapper
@@ -12,8 +12,8 @@
             .message-text 그냥 밑에 하자
         router-view.pa-0.ma-0
       BottomNav
-    .login-warpper(v-show="!$isLogin")
-      Login()
+    .login-warpper(v-show="!isLogin")
+      Login(v-on:changeIsLogin="detectIsLogin")
 
 </template>
 
@@ -39,7 +39,6 @@ Vue.prototype.$user = {
   gender: '',
   age: -1,
 };
-Vue.prototype.$isLogin = false;
 Vue.prototype.$timeForm = (date) => `${date.getHours()} : ${date.getMinutes()}`;
 
 export default {
@@ -53,10 +52,14 @@ export default {
     return {
       email: undefined,
       password: undefined,
-      messageAlert: true
+      messageAlert: true,
+      isLogin: false
     }
   },
   methods: {
+      detectIsLogin() {
+          this.isLogin = true;
+      }
   },
   mounted() {
 
