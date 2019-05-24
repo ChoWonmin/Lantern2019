@@ -19,6 +19,7 @@ import _ from 'lodash';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav'
 import { authModule, dataModule, storageModule } from './firebase/firebase.wrapper';
+import analytic from './analytics/analytic';
 
 Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
@@ -50,7 +51,94 @@ export default {
   },
   methods: {
   },
+  //    Fashion   Nightculture   Bibimbap   K-beauty   Koreafood   Site   Coffeeshop   BTS   K-pop
   mounted() {
+    const list1 = [
+      {
+        name: 'Soju',
+        count: 2
+      },
+      {
+        name: 'Fashion',
+        count: 2
+      },
+      {
+        name: 'Nightculture',
+        count: 2
+      },
+      {
+        name: 'Bibimbap',
+        count:2
+      },
+      {
+        name: 'K-beauty',
+        count: 3
+      },
+      {
+        name: 'Koreafood',
+        count: 2
+      },
+      {
+        name: 'Site',
+        count: 1
+      },
+      {
+        name: 'Coffeeshop',
+        count: 4
+      },
+      {
+        name: 'BTS',
+        count: 1
+      },
+      {
+        name: 'K-pop',
+        count: 2
+      }
+    ];
+
+    const list2 = [
+      {
+        name: 'Soju',
+        count: 3
+      },
+      {
+        name: 'Fashion',
+        count: 1
+      },
+      {
+        name: 'Nightculture',
+        count: 4
+      },
+      {
+        name: 'Bibimbap',
+        count:1
+      },
+      {
+        name: 'K-beauty',
+        count: 2
+      },
+      {
+        name: 'Koreafood',
+        count: 1
+      },
+      {
+        name: 'Site',
+        count: 1
+      },
+      {
+        name: 'Coffeeshop',
+        count: 3
+      },
+      {
+        name: 'BTS',
+        count: 3
+      },
+      {
+        name: 'K-pop',
+        count: 1
+      }
+    ];
+    analytic.calcPearson(list1, list2);
   }
 }
 </script>
