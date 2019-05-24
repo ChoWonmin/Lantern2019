@@ -25,34 +25,37 @@ export default {
     };
   },
   methods: {
-    async isUser(user) {
-        const flag = await this.$api.readUser(user.email);
+    async isUser(uid,name) {
+        const flag = await this.$api.readUser(uid);
         if(flag == null){
             alert("가입되었습니다!ㅊㅋㅊㅋ");
-            this.$api.addUser(user.email, user.displayName);
+            this.$api.addUser(uid, name);
+            this.$user.login = true;
             this.$emit('changeIsLogin');
-            this.$router.push({name: 'main'});
+            this.$router.push({name: 'signUp'});
         }
 
     },
     async loginFacebook() {
       const res = await this.$auth.facebookLogin();
-      this.isUser(res.user);
-      this.$user.email = res.user.email;
-      this.$user.displayName = res.user.displayName;
+      const uid = (res.user.providerData[0].email==null)?(res.user.providerData[0].uid):(res.user.providerData[0].email);
+      const uname = res.user.displayName;
+      this.isUser(uid, uname);
+      this.$user.email = uid;
+      this.$user.displayName = uname;
       this.$user.login = true;
       this.$emit('changeIsLogin');
       this.$router.push({name: 'main'});
     },
     async loginGoogle() {
       const res = await this.$auth.googleLogin();
-      this.isUser(res.user);
+      this.isUser(res.user.email, res.user.displayName);
       this.$user.email = res.user.email;
       this.$user.displayName = res.user.displayName;
       this.$user.login = true;
+      this.$emit('changeIsLogin');
+      this.$router.push({name: 'main'});
 
-      this.$isLogin = true;
-        this.$router.push({name: 'main'});
     }
   }
 };
