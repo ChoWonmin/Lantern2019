@@ -36,7 +36,6 @@ export default {
       this.file = files[0];
     },
     async sendCard() {
-
       const hashtag = this.hashtages.filter(e=>e.active===true).map(e=>e.text);
 
       if (this.file !== undefined) {
