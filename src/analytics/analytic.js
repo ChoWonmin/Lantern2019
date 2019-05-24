@@ -21,13 +21,10 @@ const analytic = {
       }));
     });
 
-
-
     const denominator = sumXY - (sumX*sumY/N);
     const numerator = (sumX2 - sumX*sumX/N) * (sumY2 - sumY*sumY/N);
 
-    // return denominator*denominator / numerator;
-    return denominator / Math.sqrt(numerator);
+    return denominator*denominator / numerator;
   }
 };
 

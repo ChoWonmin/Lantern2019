@@ -1,8 +1,7 @@
 import firebase from 'firebase';
 import config from './firebase.key';
+import analytics from '../analytics/analytic';
 import _ from 'lodash';
-
-import { consoleError } from 'vuetify/lib/util/console';
 
 firebase.initializeApp(config);
 
@@ -81,7 +80,6 @@ const dataModule = {
   },
   listenMessageRoom: async (messageRoomId) => {
     const data = (await resources.database.collection('MessageRooms').doc(messageRoomId).onSnapshot()).data();
-    console.log(messageRoomId, data);
     return data.messages;
   },
   uploadCard: async (image, hashtag, email, region) => {
@@ -122,8 +120,6 @@ const dataModule = {
     return res;
   },
   updateHashtag: async (hashtags, like, email) => {
-
-    console.error(hashtags);
     const userRef = resources.database.collection('Users').doc(email);
 
     _.forEach(hashtags, async e => {
@@ -178,9 +174,21 @@ const dataModule = {
       }
     });
   },
-  addTest: (email, file) => {
-    storageModule.upload(`image/user/${email}`, file);
-  },
 };
 
-export { authModule, resources, dataModule, storageModule};
+const analyticsModule = {
+  updateCF: async (userID, otherID) => {
+    const userLikeHashtags = [];
+    const otherLikeHashtags = [];
+
+    (await resources.database.collection('Users').doc(userID).collection('likeHashtags').get()).forEach(doc=>{
+      userLikeHashtags.push(doc.data());
+    });
+    (await resources.database.collection('Users').doc(otherID).collection('likeHashtags').get()).forEach(doc=>{
+      otherLikeHashtags.push(doc.data());
+    });
+
+  }
+};
+
+export { authModule, resources, dataModule, storageModule, analyticsModule};
