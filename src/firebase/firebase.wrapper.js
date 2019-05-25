@@ -42,7 +42,7 @@ const dataModule = {
     return (await resources.database.collection('Users').doc(email).get()).exists
   },
   addUser: async (email, name) => {
-    resources.database.collection('Users').doc(email).add({
+    await resources.database.collection('Users').doc(email).set({
       email: email,
       name: name
     });
@@ -188,8 +188,11 @@ const analyticsModule = {
       otherLikeHashtags.push(doc.data());
     });
 
-    analytics.calcPearson(userLikeHashtags, otherLikeHashtags);
+    const pearsonVal = analytics.calcPearson(userLikeHashtags, otherLikeHashtags);
 
+    resources.database.collection('CF').doc(userID).collection('pearsonList').doc(otherID).set({
+      val: pearsonVal
+    });
   }
 };
 
