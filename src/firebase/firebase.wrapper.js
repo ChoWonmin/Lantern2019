@@ -29,10 +29,11 @@ const storageModule = {
 const dataModule = {
   readCFListByUserID: async (userID) => {
     const res = [];
-    (await resources.database.collection('CF').doc(userID).collection('pearsonList').get())
+    (await resources.database.collection('CF').doc(userID).collection('pearsonList').orderBy("val", "desc").get())
         .forEach(doc => {
           res.push(doc.data())
         });
+    console.error(res, "Asdfsdf");
     return res;
   },
   readCardsByUserID: async (userID) => {
