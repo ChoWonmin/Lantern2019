@@ -10,7 +10,7 @@ export default {
             model: null,
             states: [
                 'Seoul, Republic of Korea', 'Osaka, Japan', 'Tokyo, Japan', 'Barcelona, Spain',
-                'Taipei, Taiwan', 'Jeju, Republic of Korea', 'London, UK', 'New York, USA'
+                'Taipei, Taiwan', 'New York, USA', 'London, UK'
             ]};
     },
     methods: {

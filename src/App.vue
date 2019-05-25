@@ -31,10 +31,10 @@ Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$storage = storageModule;
 Vue.prototype.$user = {
-  email: 'HAnana@gmail.com',
-  login: true,
+  email: 'jae0101@gmail.com',
+  login: false,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
-  region: 'New York, USA',
+  region: 'Seoul, Republic of Korea',
   displayName: '',
   gender: '',
   age: -1,
@@ -53,7 +53,7 @@ export default {
       email: undefined,
       password: undefined,
       messageAlert: true,
-      isLogin: false
+      isLogin: true
     }
   },
   methods: {
@@ -177,6 +177,8 @@ export default {
       }
     ];
     analytic.calcPearson(list1, list2);
+
+
   }
 }
 </script>

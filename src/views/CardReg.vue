@@ -42,7 +42,7 @@ export default {
         await this.$api.uploadCard(this.file, hashtag, this.$user.email, this.$user.region);
       }
 
-      this.$router.push({name:'main'});
+      // this.$router.push({name:'main'});
     }
   },
   computed: {
