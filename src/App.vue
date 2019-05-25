@@ -321,10 +321,6 @@ export default {
           name: 'Seoultower'
         },
         {
-          count: 1,
-          name: 'Lotteworldtower'
-        },
-        {
           count: 3,
           name: 'Nightview'
         },
@@ -387,7 +383,7 @@ export default {
           name: 'Hanbok'
         },
         {
-          count: 1,
+          count: 2,
           name: 'Seoultower'
         },
         {
@@ -539,7 +535,7 @@ export default {
           name: 'Lotteworldtower'
         },
         {
-          count: 1,
+          count: 2,
           name: 'Nightview'
         }
       ]
@@ -550,6 +546,7 @@ export default {
     // analyticsModule.updateCF('HAnana@gmail.com', '0108257@gmail.com');
 
     idList.forEach(ele1 => {
+      // dataModule.testData(ele1, obg[ele1]);
       idList.forEach(ele2 => {
         if (ele1 !== ele2) {
           // console.error(ele1, ele2);

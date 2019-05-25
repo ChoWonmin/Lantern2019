@@ -208,7 +208,8 @@ const analyticsModule = {
     console.error(userLikeHashtags, otherLikeHashtags, pearsonVal);
 
     resources.database.collection('CF').doc(userID).collection('pearsonList').doc(otherID).set({
-      val: pearsonVal
+      val: pearsonVal,
+      id: otherID
     });
     // resources.database.collection('CF').doc(otherID).collection('pearsonList').doc(userID).set({
     //   val: pearsonVal
