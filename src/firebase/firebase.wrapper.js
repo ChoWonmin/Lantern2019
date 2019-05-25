@@ -174,6 +174,13 @@ const dataModule = {
       }
     });
   },
+  testData: async (email, hashtags) => {
+    const ref = resources.database.collection('Users').doc(email).collection('likeHashtags');
+
+    hashtags.forEach(ele => {
+      ref.doc(ele.name).set(ele);
+    });
+  }
 };
 
 const analyticsModule = {
@@ -190,9 +197,17 @@ const analyticsModule = {
 
     const pearsonVal = analytics.calcPearson(userLikeHashtags, otherLikeHashtags);
 
+    console.error(userLikeHashtags, otherLikeHashtags, pearsonVal);
+
     resources.database.collection('CF').doc(userID).collection('pearsonList').doc(otherID).set({
       val: pearsonVal
     });
+    // resources.database.collection('CF').doc(otherID).collection('pearsonList').doc(userID).set({
+    //   val: pearsonVal
+    // });
+
+
+
   }
 };
 

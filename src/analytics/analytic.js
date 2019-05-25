@@ -11,6 +11,9 @@ const analytic = {
     list1.forEach(l1=>{
       list2.forEach((l2=>{
         if (l1.name===l2.name) {
+
+          console.log(l1, l2);
+
           sumX += l1.count;
           sumY += l2.count;
           sumX2 += l1.count * l1.count;
@@ -24,7 +27,9 @@ const analytic = {
     const denominator = sumXY - (sumX*sumY/N);
     const numerator = (sumX2 - sumX*sumX/N) * (sumY2 - sumY*sumY/N);
 
-    return denominator*denominator / numerator;
+    console.error(denominator, numerator);
+
+    return denominator / Math.sqrt(numerator);
   }
 };
 
