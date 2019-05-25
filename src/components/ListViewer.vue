@@ -3,23 +3,19 @@
         v-content.list-header
             .list-header-text {{title}}
         v-content(v-show="open").lantern-list
-            v-card(v-for="(item,index) in arrWithimages" v-if="listCount>index")
+            v-card(v-for="(item,index) in items" v-if="listCount>index")
                 v-layout(row wrap).lantern-content
                     v-flex(align-self-center xs4)
-                        v-img(:src="item.profileSrc")
-                        <!--v-img(v-if="index===0" :src="'https://firebasestorage.googleapis.com/v0/b/lantern2019-607ba.appspot.com/o/image%2Fuser%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202019-05-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.05.03.png?alt=media&token=fc43b04d-6cf1-4f2a-a1b7-0ef4f80f1f52'" )-->
-                        <!--v-img(v-if="index===1" :src="'https://firebasestorage.googleapis.com/v0/b/lantern2019-607ba.appspot.com/o/image%2Fuser%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202019-05-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.06.31.png?alt=media&token=0df21a1f-207a-4f7e-8049-5e98d2e56c7b'" )-->
-                        <!--v-img(v-if="index===2" :src="'https://firebasestorage.googleapis.com/v0/b/lantern2019-607ba.appspot.com/o/image%2Fuser%2FJun94%40gmail.com?alt=media&token=441de634-6f2f-4adc-b1b0-31393bf0b954'" )-->
-                        <!--v-img(v-if="index===3" :src="'https://firebasestorage.googleapis.com/v0/b/lantern2019-607ba.appspot.com/o/image%2Fuser%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202019-05-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.05.41.png?alt=media&token=a351c6ae-a8ab-4123-a608-84367c0105bd'" )-->
+                        v-img(:src="item.src")
                     v-flex(xs8)
                         v-card-title
                             v-layout(column)
-                                .headline.name {{item.lantern.name}}
+                                .headline.name {{item.name}}
                                 div.body-2.font-weight-regular
-                                    .infomation {{`( ${item.lantern.age}, ${item.lantern.sex} )`}}
+                                    .infomation {{`( ${item.age}, ${item.sex} )`}}
                                 v-layout
                                     v-icon(small) language
-                                    div.caption {{item.lantern.lang.join(' ')}}
+                                    div.caption {{item.lang.join(' ')}}
                                         .keywords
                                 v-layout
                                     v-icon(small color = "yellow") star
@@ -57,12 +53,16 @@
             }
         },
         async mounted() {
-            this.items.forEach(async (e)=>{
-                this.arrWithimages.push({
-                    lantern: e,
-                    profileSrc: await this.$storage.getUrl(`image/user/${e.email}`)
-                });
-            });
+            // console.error(this.items, 'item');
+            //
+            // this.items.forEach(async (e)=>{
+            //     console.error(e);
+            //     this.arrWithimages.push({
+            //         lantern: e,
+            //         profileSrc: await this.$storage.getUrl(`image/user/${e.email}`)
+            //     });
+            // });
+            // console.log(this.arrWithimages, "arrWithimages");
         }
     };
 </script>

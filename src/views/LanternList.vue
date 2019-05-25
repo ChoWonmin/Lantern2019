@@ -3,8 +3,8 @@
         v-layout
             v-flex(xs12)
                 ListViewer(title="나와 가장 잘 맞는 랜턴" :items="list1")
-                CardListViewer(title="해시태그 기반 카드" :items="list1")
-                ListViewer(title="지역 별 인기 랜턴" :items="list2")
+                CardListViewer(title="해시태그 기반 카드" :items="list2")
+                ListViewer(title="지역 별 인기 랜턴" :items="list3")
 </template>
 
 <script>
@@ -21,23 +21,23 @@
                 list2: [],
                 list3: [],
                 isOpen: false,
-                uid: ""
+                uid: "",
+                tempArr: []
             }
         },
         async mounted() {
             this.uid = this.$user.email;
-            await this.$api.readCFListByUserID("uid");
+            this.uid = "0108257@gmail.com";
+            this.tempArr = await this.$api.readCFListByUserID(this.uid);
+            this.tempArr.forEach(async (e)=>{
+                const tmp = await this.$api.readUser(e.id);
+                tmp.src = await this.$storage.getUrl(`image/user/${e.id}`);
+                this.list1.push(tmp);
+            });
 
-
-            this.list2.push(await this.$api.readUser("jae0101@gmail.com"));
-            this.list2.push(await this.$api.readUser("HAnana@gmail.com"));
-            this.list2.push(await this.$api.readUser("Sonny@gmail.com"));
-            this.list2.push(await this.$api.readUser("Jun94@gmail.com"));
-
-            this.list1.push(await this.$api.readUser("Sonny@gmail.com"));
-            this.list1.push(await this.$api.readUser("jae0101@gmail.com"));
-            this.list1.push(await this.$api.readUser("Jun94@gmail.com"));
-            this.list1.push(await this.$api.readUser("HAnana@gmail.com"));
+            // this.list2.push(await this.$api.readUser("HAnana@gmail.com"));
+            // this.list2.push(await this.$api.readUser("Sonny@gmail.com"));
+            // this.list2.push(await this.$api.readUser("Jun94@gmail.com"));
 
 
 
