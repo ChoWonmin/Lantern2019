@@ -25,14 +25,16 @@ export default {
     };
   },
   methods: {
-    async isUser(uid,name) {
+    async isUser(uid,uname) {
         const flag = await this.$api.readUser(uid);
         if(flag == null){
             alert("가입되었습니다!ㅊㅋㅊㅋ");
-            this.$api.addUser(uid, name);
+            //this.$api.addUser(uid, uname);
+            this.$user.email = uid;
+            this.$user.displayName = uname;
             this.$user.login = true;
             this.$emit('changeIsLogin');
-            this.$router.push({name: 'signUp'});
+            this.$router.push({name: 'main'});
         }
 
     },
@@ -40,6 +42,7 @@ export default {
       const res = await this.$auth.facebookLogin();
       const uid = (res.user.providerData[0].email==null)?(res.user.providerData[0].uid):(res.user.providerData[0].email);
       const uname = res.user.displayName;
+      //console.log(uid);
       this.isUser(uid, uname);
       this.$user.email = uid;
       this.$user.displayName = uname;

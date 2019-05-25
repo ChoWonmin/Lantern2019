@@ -3,7 +3,7 @@
         v-layout
             v-flex(xs12)
                 v-card(class="mx-auto" height="100%" @click="isHover")
-                    v-img(:src="require('../assets/profile01.jpg')" height="100%" )
+                    v-img(:src="cardImg" height="100%" )
                             div(v-if="flag" class ="grey darken-4" style="height: 100%" ).transparent
                                 v-chip(v-for="hashtag in hashtags" label color= "yellow darken-3" text-color="white")
                                     v-icon(left) label
@@ -22,6 +22,7 @@
             return {
                 hashtags: ["a", "b", "c", "d", "e", "g", "h"],
                 cardID: undefined,
+                cardImg: "",
                 flag: false
             }
         },
@@ -32,7 +33,8 @@
         },
         async mounted() {
             this.cardID = this.$route.params.cardID;
-            this.hashtags = await this.$api.readHashtagByCardID();
+            this.hashtags = await this.$api.readHashtagByCardID(this.cardID);
+            this.cardImg = await this.$storage.getUrl(`image/card/${this.cardID}`);
         }
     }
 </script>
