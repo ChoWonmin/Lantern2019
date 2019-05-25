@@ -3,7 +3,7 @@
         v-layout
             v-flex(xs12 sm6 offset-sm3)
                 .back
-                    v-img(src="https://cdn.vuetifyjs.com/images/parallax/material.jpg").backimg
+                    v-img(:src="profileImg").backimg
                 .profile
                     v-avatar(size="120px").avatar-wrapper
                         v-img(:src="profileImg" alt="Avatar")
@@ -51,7 +51,7 @@
         },
         async mounted() {
             this.userID = this.$route.params.id;
-            this.userID = 'DASH@gmail.com';
+            this.userID = 'Jun94@gmail.com';
             this.user = await this.$api.readUser(this.userID);
             this.profileImg = await this.$storage.getUrl(`image/user/${this.userID}`);
             this.cards = await this.$api.readCardsByUserID(this.userID);
@@ -82,7 +82,7 @@
         height: 200px
         .backimg
             height: 100%
-            opacity: 0.7
+            opacity: 0.5
     .profile
         position: relative
         width: 100%

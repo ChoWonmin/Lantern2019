@@ -5,7 +5,7 @@
                 v-card(class="mx-auto" height="100%" @click="isHover")
                     v-img(:src="cardImg" height="100%" )
                             div(v-if="flag" class ="grey darken-4" style="height: 100%" ).transparent
-                                v-chip(v-for="hashtag in hashtags" label color= "yellow darken-3" text-color="white")
+                                v-chip(v-for="hashtag in hashtags" label color= "yellow darken-3" text-color="white").chip-transparent
                                     v-icon(left) label
                                     div.subheading.font-weight-bold {{hashtag}}
 
@@ -44,4 +44,6 @@
 <style scoped lang="sass">
     .transparent
         opacity: 0.65
+        .chip-transparent
+            opacity: 100
 </style>

@@ -20,10 +20,14 @@
                 list1: [],
                 list2: [],
                 list3: [],
-                isOpen: false
+                isOpen: false,
+                uid: ""
             }
         },
         async mounted() {
+            this.uid = this.$user.email;
+            await this.$api.readCFListByUserID("uid");
+
 
             this.list2.push(await this.$api.readUser("jae0101@gmail.com"));
             this.list2.push(await this.$api.readUser("HAnana@gmail.com"));

@@ -27,6 +27,14 @@ const storageModule = {
 };
 
 const dataModule = {
+  readCFListByUserID: async (userID) => {
+    const res = [];
+    (await resources.database.collection('CF').doc(userID).collection('pearsonList').get())
+        .forEach(doc => {
+          res.push(doc.data())
+        });
+    return res;
+  },
   readCardsByUserID: async (userID) => {
     const res = [];
     (await resources.database.collection('Users').doc(userID).collection('cards').get())
