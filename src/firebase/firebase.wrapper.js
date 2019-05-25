@@ -188,6 +188,8 @@ const analyticsModule = {
       otherLikeHashtags.push(doc.data());
     });
 
+    analytics.calcPearson(userLikeHashtags, otherLikeHashtags);
+
   }
 };
 
