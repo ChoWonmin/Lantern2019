@@ -20,8 +20,9 @@
         },
         data() {
             return {
-                hashtags: ["a", "b", "c", "d", "e", "g", "h"],
+                hashtags: [],
                 cardID: undefined,
+                card: [],
                 cardImg: "",
                 flag: false
             }
@@ -33,7 +34,8 @@
         },
         async mounted() {
             this.cardID = this.$route.params.cardID;
-            this.hashtags = await this.$api.readHashtagByCardID(this.cardID);
+            this.card = await this.$api.readHashtagByCardID(this.cardID);
+            this.hashtags = this.card.hashtags;
             this.cardImg = await this.$storage.getUrl(`image/card/${this.cardID}`);
         }
     }

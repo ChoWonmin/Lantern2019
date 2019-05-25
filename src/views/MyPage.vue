@@ -26,9 +26,9 @@
                 v-card.cards-wrapper
                     v-container(grid-list-sm fluid).pa-0
                         v-layout(row wrap)
-                            v-flex(v-for="img in cardImages" xs4 d-flex)
-                                v-card(flat tile class="d-flex")
-                                    v-img(:src="img" aspect-ratio="1" class="grey lighten-2")
+                            v-flex(v-for="card in cardArray" xs4 d-flex)
+                                v-card(flat tile class="d-flex" @click="$router.push({name:'cardView', params: {cardID: card.cardID}})")
+                                    v-img(:src="card.cardSrc" aspect-ratio="1" class="grey lighten-2")
                                         v-layout(fill-height align-center justify-center ma-0)
 </template>
 
@@ -46,19 +46,20 @@
                 profileImg: '',
                 cards: [],
                 isLantern: false,
-                cardImages: []
+                cardArray: []
             }
         },
         async mounted() {
             this.userID = this.$route.params.id;
-            //this.userID = 'DASH@gmail.com';
+            this.userID = 'DASH@gmail.com';
             this.user = await this.$api.readUser(this.userID);
             this.profileImg = await this.$storage.getUrl(`image/user/${this.userID}`);
             this.cards = await this.$api.readCardsByUserID(this.userID);
             this.cards.forEach(async (e)=>{
-               this.cardImages.push(
-                   await this.$storage.getUrl(`image/card/${e.id}`)
-               );
+               this.cardArray.push({
+                   cardSrc: await this.$storage.getUrl(`image/card/${e.id}`),
+                   cardID: e.id
+               });
             });
 
             this.isLantern = this.user.isLantern;

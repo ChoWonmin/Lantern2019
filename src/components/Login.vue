@@ -28,8 +28,8 @@ export default {
     async isUser(uid,uname) {
         const flag = await this.$api.readUser(uid);
         if(flag == null){
+            await this.$api.addUser(uid, uname);
             alert("가입되었습니다!ㅊㅋㅊㅋ");
-            //this.$api.addUser(uid, uname);
             this.$user.email = uid;
             this.$user.displayName = uname;
             this.$user.login = true;
