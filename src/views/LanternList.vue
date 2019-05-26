@@ -37,9 +37,29 @@
             this.list1.push(tmp);
           }
 
-            // this.list2.push(await this.$api.readUser("HAnana@gmail.com"));
-            // this.list2.push(await this.$api.readUser("Sonny@gmail.com"));
-            // this.list2.push(await this.$api.readUser("Jun94@gmail.com"));
+            this.list3.push({
+                name:"Dahye Kim",
+                sex: "female",
+                lang:["kor", "eng"],
+                age: 26,
+                src:require('../assets/pprofile1.png')
+            });
+
+            this.list3.push({
+                name:"SeungMin Woo",
+                sex: "male",
+                lang:["kor", "eng"],
+                age: 25,
+                src:require('../assets/pprofile2.png')
+            });
+            this.list3.push({
+                name:"Linda Lee",
+                sex: "female",
+                lang:["kor", "eng"],
+                age: 22,
+                src:require('../assets/pprofile3.png')
+            });
+
         }
     }
 </script>

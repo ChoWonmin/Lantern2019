@@ -1,3 +1,7 @@
+List viewer
+
+
+
 <template lang="pug">
     v-content
         v-content.list-header
@@ -21,7 +25,7 @@
                                     v-icon(small color = "yellow") star
                                     div 4.5
                                         //.rating {{lantern.rating}}
-        v-content
+        .more-wrapper
             v-icon.icon-more(style="outline" @click="openList()") keyboard_arrow_down
 </template>
 
@@ -69,7 +73,7 @@
 
 <style scoped lang="sass">
     .list-header
-        height: 40px
+        height: 35px
         font-size: small
         font-weight: bold
         align-content: center
@@ -78,14 +82,19 @@
             height: 100%
             line-height: 40px
             text-indent: 10px
-    .lantern-list
-        .lantern-content
-            max-height: 150px
-    .icon-more
-        height: 30px
-        display: flex
+        .lantern-list
+            .lantern-content
+                max-height: 150px
+    .more-wrapper
         justify-content: center
-        background: white
+        display: flex
+        .icon-more
+            flex: 1
+            height: 20px
+            display: flex
+            justify-content: center
+            background: white
 
 </style>
+
 
