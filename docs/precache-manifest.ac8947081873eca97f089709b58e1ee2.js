@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/Lantern2019/js/about.f526c89a.js"
   },
   {
-    "revision": "386516dcd3f72dbcc1fbc40fd1b098b9",
+    "revision": "236d40d6051ca2bc30880731d23812b1",
     "url": "/Lantern2019/index.html"
   },
   {
