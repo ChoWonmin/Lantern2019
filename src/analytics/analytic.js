@@ -1,5 +1,4 @@
 const analytic = {
-
   calcPearson: (list1, list2) => {
     let sumX = 0;
     let sumY = 0;
@@ -11,8 +10,6 @@ const analytic = {
     list1.forEach(l1=>{
       list2.forEach((l2=>{
         if (l1.name===l2.name) {
-
-          console.log(l1, l2);
 
           sumX += l1.count;
           sumY += l2.count;
@@ -26,8 +23,6 @@ const analytic = {
 
     const denominator = sumXY - (sumX*sumY/N);
     const numerator = (sumX2 - sumX*sumX/N) * (sumY2 - sumY*sumY/N);
-
-    console.error(denominator, numerator);
 
     return denominator / Math.sqrt(numerator);
   }

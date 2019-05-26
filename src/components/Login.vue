@@ -1,7 +1,7 @@
 <template lang="pug">
   v-container(align-center fill-height).pa-0
     v-layout(column)
-        v-img(:src="require('../assets/lantern_main.png')" min-height="810").background-wapper
+        v-img(:src="require('../assets/lantern_main.png')" min-height="100%").background-wapper
             .buttons-wapper
               v-flex(@click="loginFacebook")
                 v-btn(color="#3b5998").font-weight-bold

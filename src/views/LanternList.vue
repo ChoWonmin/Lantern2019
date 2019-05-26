@@ -21,26 +21,23 @@
                 list2: [],
                 list3: [],
                 isOpen: false,
-                uid: "",
-                tempArr: []
+                uid: ""
             }
         },
         async mounted() {
             this.uid = this.$user.email;
             this.uid = "0108257@gmail.com";
-            this.tempArr = await this.$api.readCFListByUserID(this.uid);
-            this.tempArr.forEach(async (e)=>{
-                const tmp = await this.$api.readUser(e.id);
-                tmp.src = await this.$storage.getUrl(`image/user/${e.id}`);
-                this.list1.push(tmp);
-            });
+            const tempArr = await this.$api.readCFListByUserID(this.uid);
+
+          for (let i = 0; i < tempArr.length; i++) {
+            const tmp = await this.$api.readUser(tempArr[i].id);
+            tmp.src = await this.$storage.getUrl(`image/user/${tempArr[i].id}`);
+            this.list1.push(tmp);
+          }
 
             // this.list2.push(await this.$api.readUser("HAnana@gmail.com"));
             // this.list2.push(await this.$api.readUser("Sonny@gmail.com"));
             // this.list2.push(await this.$api.readUser("Jun94@gmail.com"));
-
-
-
         }
     }
 </script>

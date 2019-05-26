@@ -6,7 +6,7 @@
             v-card(v-for="(item,index) in items" v-if="listCount>index")
                 v-layout(row wrap).lantern-content
                     v-flex(align-self-center xs4)
-                        v-img(:src="item.src")
+                        v-img(:src="item.src" height="120px")
                     v-flex(xs8)
                         v-card-title
                             v-layout(column)
