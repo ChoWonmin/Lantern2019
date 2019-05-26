@@ -1,17 +1,20 @@
 <template lang="pug">
   v-container(align-center fill-height)
     v-layout(column)
-      v-flex
+      v-flex.photo-input-wrapper
         v-card(width="100%")
           v-img(:src="getImageSrc" width="100%" max-height="50vh")
-        v-btn(@click="$refs.inputUpload.click()") image
+        v-btn(@click="$refs.inputUpload.click()") Upload Image
           input(type="file" ref="inputUpload" v-show="false" accept="image/*" @change="detectFiles($event.target.files)")
       v-flex
         v-chip(v-for="hashtag in getHastage" v-model="hashtag.active" close) {{hashtag.text}}
       v-flex
         v-text-field(solo v-model="hashtageInput" label="hashtag" @change="sendHashtage")
-      v-flex
-        v-btn(@click="sendCard") Send
+      v-layout(align-center align-content-center)
+        v-spacer
+        v-flex.regibutton-wrapper
+            v-btn(@click="sendCard" color="#ffb300" width="200px") Register a Card
+        v-spacer
 </template>
 
 <script>
@@ -51,7 +54,7 @@ export default {
     },
     getImageSrc() {
       if (this.file===undefined) {
-        return require('../assets/profile01.jpg');
+        return require('../assets/default-image.jpg');
       } else {
         return URL.createObjectURL(this.file);
       }
@@ -62,5 +65,10 @@ export default {
 </script>
 
 <style scoped lang="sass">
-
+.photo-input-wrapper
+.regibutton-wrapper
+    align-items: center
+    alignment: center
+    align-self: center
+    padding-left: 40px
 </style>

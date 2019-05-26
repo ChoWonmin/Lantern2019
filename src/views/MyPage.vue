@@ -109,7 +109,7 @@
 
 
     .lantern-switch-wrapper
-        background-color: #e0e0e0
+        background-color: #EEEEEE
         height: 60px
         display: flex
         padding-left: 30px
