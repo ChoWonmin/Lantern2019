@@ -29,6 +29,8 @@
             this.uid = "0108257@gmail.com";
             const tempArr = await this.$api.readCFListByUserID(this.uid);
 
+            // console.warn('피어슨 기반 정렬된 추천리스트', tempArr);
+
           for (let i = 0; i < tempArr.length; i++) {
             const tmp = await this.$api.readUser(tempArr[i].id);
             tmp.src = await this.$storage.getUrl(`image/user/${tempArr[i].id}`);
