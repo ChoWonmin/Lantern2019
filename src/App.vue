@@ -31,7 +31,7 @@ Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$storage = storageModule;
 Vue.prototype.$user = {
-  email: 'jae0101@gmail.com',
+  email: '0108257@gmail.com',
   login: false,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
   region: 'Seoul, Republic of Korea',

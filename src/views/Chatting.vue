@@ -1,19 +1,20 @@
 <template lang="pug">
   v-container
     v-layout(column).chatting
-      .message-wrapper(v-for="msg in messages")
-        <!--.message-line(v-show="other===msg.sender")-->
-          <!--.profile-->
-            <!--v-img(:src="require('../assets/profile02.jpg')" contain).circle-->
-          <!--.content-wrapper-->
-            <!--.text.other {{msg.text}}-->
-            <!--.time {{ $timeForm(msg.time.toDate()) }}-->
-        <!--v-spacer-->
-        <!--.message-line(v-show="$user.id===msg.sender")-->
-          <!--v-spacer-->
-          <!--.content-wrapper-->
-            <!--.text.my {{msg.text}}-->
-            <!--.time {{ $timeForm(msg.time.toDate()) }}-->
+      .message-wrapper(v-for="msg in getMessages")
+        .message-line(v-show="other===msg.sender")
+          .profile
+            v-avatar(size="86")
+              v-img(:src="require('../assets/profile03.jpeg')" width="86px" height="86px")
+          .content-wrapper
+            .text.other {{msg.text}}
+            .time {{ $timeForm(msg.time) }}
+        v-spacer
+        .message-line(v-show="$user.email===msg.sender")
+          v-spacer
+          .content-wrapper
+            .text.my {{msg.text}}
+            .time {{ $timeForm(msg.time) }}
     .message-input-wrapper
       v-textarea(solo height="92px" rows="3" v-model="inputMsg")
       v-btn(@click="send") 전송
@@ -24,20 +25,43 @@ export default {
   data() {
     return {
       room: {},
-      messages: [],
+      messages: [
+      ],
       inputMsg: '',
       other: ''
     };
   },
   methods: {
     send: function() {
-      this.inputMsg = this.$api.sendMsg(this.room.id, this.$user.id, this.other, this.inputMsg);
+      // this.inputMsg = this.$api.sendMsg(this.room.id, this.$user.id, this.other, this.inputMsg);
+      this.messages.push({
+        receiver: 'Jun94@gmail.com',
+        sender: this.$user.email,
+        text: 'Glad to meet you Ha June!', //this.inputMsg,
+        time: new Date()
+      });
+      this.inputMsg = '';
+
+      setTimeout(() => {
+        this.messages.push({
+          receiver: this.$user.email,
+          sender: 'Jun94@gmail.com',
+          text: 'Hi, Seo Kyung :)',
+          time: new Date()
+        });
+      }, 500);
     }
   },
   async mounted() {
     this.room = this.$route.params.room;
-    this.messages = await this.$api.listenMessageRoom(this.room.id);
+    // this.messages = await this.$api.listenMessageRoom(this.room.id);
     // this.other = this.room.message.sender === this.$user.id ?this.room.message.receiver:this.room.message.sender;
+    this.other = 'Jun94@gmail.com';
+  },
+  computed: {
+    getMessages: function () {
+      return this.messages;
+    }
   }
 };
 </script>
@@ -62,16 +86,12 @@ $message-input-height: 96px
       .profile
         width: 98px
         display: flex
-        .circle
-          width: 86px
-          height: 86px
-          border-radius: 10%
       .content-wrapper
         .text
           height: 44px
           line-height: 44px
-          padding: 0 4px
-          font-size: 24px
+          padding: 0 12px
+          font-size: 20px
           border-radius: 4px
           &.other
             background-color: #ffe1dd
