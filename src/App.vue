@@ -14,7 +14,6 @@
       BottomNav
     .login-warpper(v-show="!isLogin")
       Login(v-on:changeIsLogin="detectIsLogin")
-
 </template>
 
 <script>

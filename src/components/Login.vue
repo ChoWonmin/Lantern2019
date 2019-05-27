@@ -1,14 +1,14 @@
 <template lang="pug">
   v-container(align-center fill-height).pa-0
     v-layout(column)
-        v-img(:src="require('../assets/lantern_main.png')" min-height="100%").background-wapper
-            .buttons-wapper
-              v-flex(@click="loginFacebook")
-                v-btn(color="#3b5998").font-weight-bold
-                  .login-btn sign in with Facebook
-              v-flex(@click="loginGoogle")
-                v-btn(color="#dd4b39").font-weight-bold
-                  .login-btn sign in with Google
+      v-img(:src="require('../assets/lantern_main.png')" min-height="100vh").background-wapper
+        .buttons-wapper
+          v-flex(@click="loginFacebook")
+            v-btn(color="#3b5998").font-weight-bold
+              .login-btn sign in with Facebook
+          v-flex(@click="loginGoogle")
+            v-btn(color="#dd4b39").font-weight-bold
+              .login-btn sign in with Google
 </template>
 
 <script>
