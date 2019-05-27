@@ -17,11 +17,11 @@
           .line-warpper
             v-icon(small) language
             .text {{user.lang.join('  ')}}
-        .lantern-switch-wrapper(v-show="$user.email!==userID")
+        .lantern-switch-wrapper(v-show="true")
           .lantern-switch
             v-switch(v-model="isLantern" color="yellow darken-3" @change="onOffLantern")
           .lantern-text(v-bind:class="{active: isLantern}") {{getLanternText}}
-        .message-wrapper(v-show="$user.email===userID")
+        .message-wrapper(v-show="false")
           v-btn(@click="$router.push({name: 'chatting', params: {room: 'hello'}})")
             v-icon send
             .btn-name message
