@@ -52,7 +52,7 @@ export default {
       email: undefined,
       password: undefined,
       messageAlert: true,
-      isLogin: false
+      isLogin: true
     }
   },
   methods: {

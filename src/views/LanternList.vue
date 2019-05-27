@@ -25,6 +25,29 @@ export default {
     }
   },
   async mounted() {
+    this.list3.push({
+      name:"Dahye Kim",
+      sex: "female",
+      lang:["kor", "eng"],
+      age: 26,
+      src:require('../assets/pprofile1.jpg')
+    });
+    this.list3.push({
+      name:"SeungMin Woo",
+      sex: "male",
+      lang:["kor", "eng"],
+      age: 25,
+      src:require('../assets/pprofile2.jpg')
+    });
+    this.list3.push({
+      name:"Linda Lee",
+      sex: "female",
+      lang:["kor", "eng"],
+      age: 22,
+      src:require('../assets/pprofile3.jpg')
+    });
+
+
     this.uid = this.$user.email;
     this.uid = "0108257@gmail.com";
     const tempArr = await this.$api.readCFListByUserID(this.uid);
@@ -37,28 +60,39 @@ export default {
       this.list1.push(tmp);
     }
 
-    this.list3.push({
-        name:"Dahye Kim",
-        sex: "female",
-        lang:["kor", "eng"],
-        age: 26,
-        src:require('../assets/pprofile1.png')
-    });
-
-    this.list3.push({
-      name:"SeungMin Woo",
-      sex: "male",
-      lang:["kor", "eng"],
-      age: 25,
-      src:require('../assets/pprofile2.png')
-    });
-    this.list3.push({
+    this.list1.push({
       name:"Linda Lee",
       sex: "female",
       lang:["kor", "eng"],
       age: 22,
-      src:require('../assets/pprofile3.png')
+      src:require('../assets/lp1.jpg')
     });
+
+    this.list1.push({
+      name:"da Lee",
+      sex: "female",
+      lang:["kor", "eng"],
+      age: 22,
+      src:require('../assets/lp2.jpg')
+    });
+
+    this.list1.push({
+      name:"Bab Kim",
+      sex: "female",
+      lang:["kor", "eng"],
+      age: 22,
+      src:require('../assets/lp3.jpg')
+    });
+
+    this.list1.push({
+      name:"miyoung Kim",
+      sex: "female",
+      lang:["kor", "eng"],
+      age: 22,
+      src:require('../assets/lp4.jpg')
+    });
+
+
 
   }
 }

@@ -49,7 +49,7 @@ export default {
           text: 'Hi, Seo Kyung :)',
           time: new Date()
         });
-      }, 500);
+      }, 1500);
     }
   },
   async mounted() {
