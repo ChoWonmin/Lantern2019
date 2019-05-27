@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/Lantern2019/img/lp2.9240f8f5.jpg"
   },
   {
-    "revision": "6c227e1d274cb9d2a146",
-    "url": "/Lantern2019/js/app.cefdd3ae.js"
+    "revision": "91d9ab12297bad4bc923",
+    "url": "/Lantern2019/js/app.1fe927f4.js"
   },
   {
     "revision": "c3ab183df43a6b7a2332",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/Lantern2019/img/자산 1.327b6e09.svg"
   },
   {
-    "revision": "06a49d17f98fa8deff423063fab63e6d",
+    "revision": "d3c61810b6c8739ea21413825d2374e6",
     "url": "/Lantern2019/index.html"
   },
   {
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/Lantern2019/css/chunk-vendors.792086d0.css"
   },
   {
-    "revision": "6c227e1d274cb9d2a146",
-    "url": "/Lantern2019/css/app.252adf29.css"
+    "revision": "91d9ab12297bad4bc923",
+    "url": "/Lantern2019/css/app.4442dfda.css"
   }
 ];
