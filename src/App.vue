@@ -34,7 +34,7 @@ Vue.prototype.$user = {
   email: '0108257@gmail.com',
   login: false,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
-  region: 'Seoul, Republic of Korea',
+  region: 'New York, USA',
   displayName: '',
   gender: '',
   age: -1,
