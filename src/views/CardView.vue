@@ -7,8 +7,6 @@
         v-chip(v-for="hashtag in hashtags" label color= "yellow darken-3" text-color="white").chip-transparent
           v-icon(left) label
           .subheading.font-weight-bold {{hashtag}}
-
-
 </template>
 
 <script>

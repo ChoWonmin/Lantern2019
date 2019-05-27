@@ -1,5 +1,12 @@
 <template lang="pug">
   v-container(fill-height)
+    .alart-wrapper(v-show="openAlart" @click="$router.push({name: 'chatting', params: {room: 'adnladnlk'}})")
+      .profile-wrapper
+        v-avatar(size="64")
+          v-img(:src="image").profile-image
+      .msg-wrapper
+        .name-text 0108257@gmail.com
+        .message-text Glad to meet you Ha June!
     v-layout(column)
       v-layout
         v-combobox(box background-color = "white" full-width :items="states"
@@ -34,7 +41,9 @@ export default {
         'Seoul, Republic of Korea', 'Osaka, Japan', 'Tokyo, Japan', 'Barcelona, Spain',
         'Taipei, Taiwan', 'Jeju, Republic of Korea', 'London, UK'
       ],
-      region: this.$user.region
+      region: this.$user.region,
+      openAlart: false,
+      image: require('../assets/a2.jpg')
     };
   },
   methods: {
@@ -66,6 +75,10 @@ export default {
   },
   async mounted() {
     await this.updateNewCards();
+
+    setTimeout(() => {
+      this.openAlart = true;
+    }, 2500);
   },
   computed: {
     getImageSrc() {
@@ -128,4 +141,45 @@ export default {
       transition: all .7s
     &.none
       transition: none
+
+
+.alart-wrapper
+  position: absolute
+  display: flex
+  left: 6px
+  top: 24px
+  width: calc(100% - 12px)
+  height: 72px
+  background-color: #fdfdfd
+  z-index: 100
+  border-radius: 4px
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  box-shadow: 6px 6px 3px 0px rgba(0.2,0.2,0.2,0.5)
+  padding: 4px 12px
+  .profile-wrapper
+    width: 76px
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    .profile
+      width: 54px
+      height: 54px
+      border-radius: 100%
+  .msg-wrapper
+    flex: 1
+    height: 100%
+    padding: 4px
+    .name-text
+      width: 100%
+      height: 50%
+      font-weight: bold
+      font-size: 18px
+      color: grey
+    .message-text
+      width: 100%
+      height: 50%
+      font-weight: bold
+      font-size: 18px
 </style>

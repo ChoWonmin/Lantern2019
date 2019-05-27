@@ -5,10 +5,10 @@
         .message-line(v-show="other===msg.sender")
           .profile
             v-avatar(size="86")
-              v-img(:src="require('../assets/profile03.jpeg')" width="86px" height="86px")
+              v-img(:src="require('../assets/a2.jpg')" width="86px" height="86px")
           .content-wrapper
             .text.other {{msg.text}}
-            .time {{ $timeForm(msg.time) }}
+            .time 11:11
         v-spacer
         .message-line(v-show="$user.email===msg.sender")
           v-spacer
@@ -41,22 +41,20 @@ export default {
         time: new Date()
       });
       this.inputMsg = '';
-
-      setTimeout(() => {
-        this.messages.push({
-          receiver: this.$user.email,
-          sender: 'Jun94@gmail.com',
-          text: 'Hi, Seo Kyung :)',
-          time: new Date()
-        });
-      }, 1500);
     }
   },
   async mounted() {
     this.room = this.$route.params.room;
     // this.messages = await this.$api.listenMessageRoom(this.room.id);
     // this.other = this.room.message.sender === this.$user.id ?this.room.message.receiver:this.room.message.sender;
-    this.other = 'Jun94@gmail.com';
+    this.other = '0108257@gmail.com';
+
+    this.messages.push({
+      receiver: 'Jun94@gmail.com',
+      sender: '0108257@gmail.com',
+      text: 'Glad to meet you Ha June!', //this.inputMsg,
+      time: new Date()
+    });
   },
   computed: {
     getMessages: function () {

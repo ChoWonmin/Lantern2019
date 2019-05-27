@@ -17,11 +17,11 @@
           .line-warpper
             v-icon(small) language
             .text {{user.lang.join('  ')}}
-        .lantern-switch-wrapper(v-show="$user.email===userID")
+        .lantern-switch-wrapper(v-show="$user.email!==userID")
           .lantern-switch
-            v-switch(v-model="isLantern" color="yellow darken-3" @change="onOffLantern()")
+            v-switch(v-model="isLantern" color="yellow darken-3" @change="onOffLantern")
           .lantern-text(v-bind:class="{active: isLantern}") {{getLanternText}}
-        .message-wrapper(v-show="$user.email!==userID")
+        .message-wrapper(v-show="$user.email===userID")
           v-btn(@click="$router.push({name: 'chatting', params: {room: 'hello'}})")
             v-icon send
             .btn-name message
@@ -47,7 +47,7 @@ export default {
       profileImg: '',
       cards: [],
       isLantern: false,
-      cardArray: []
+      cardArray: [],
     }
   },
   async mounted() {
@@ -56,18 +56,19 @@ export default {
     this.user = await this.$api.readUser(this.userID);
     this.profileImg = await this.$storage.getUrl(`image/user/${this.userID}`);
     this.cards = await this.$api.readCardsByUserID(this.userID);
-    this.cards.forEach(async (e)=>{
+
+    for (let ele of this.cards) {
       this.cardArray.push({
-        cardSrc: await this.$storage.getUrl(`image/card/${e.id}`),
-        cardID: e.id
+        cardSrc: await this.$storage.getUrl(`image/card/${ele.id}`),
+        cardID: ele.id
       });
-    });
+    }
 
     this.isLantern = this.user.isLantern;
   },
   methods: {
     onOffLantern() {
-      this.$api.onOffLantern(this.isLantern);
+      // this.$api.onOffLantern(this.isLantern);
     }
   },
   computed: {
@@ -129,8 +130,6 @@ export default {
       &.active
         color: #ffb300
         font-size: 25px
-
-
   .message-wrapper
     display: flex
     justify-content: center
