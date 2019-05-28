@@ -59,15 +59,29 @@ export default {
       this.swipeDirection = 'none';
     },
     async swipe (direction) {
+      const idList = ['Jun94@gmail.com', 'dtuna0407@gmail.com', 'jae0101@gmail.com',
+        'HAnana@gmail.com' ,'Sonny@gmail.com'
+      ];
+
       switch (direction) {
         case 'left':
-          this.$api.updateHashtag(this.cards[this.currInd].hashtags, true, this.$user.email);
+          await this.$api.updateHashtag(this.cards[this.currInd].hashtags, true, this.$user.email);
           this.swipeDirection = direction;
+
+          idList.forEach(ele => {
+            this.$analytics.updateCF(this.$user.email, ele);
+          });
+
           await this.updateMain();
           break;
         case 'right':
-          this.$api.updateHashtag(this.cards[this.currInd].hashtags, false, this.$user.email);
+          await this.$api.updateHashtag(this.cards[this.currInd].hashtags, false, this.$user.email);
           this.swipeDirection = direction;
+
+          idList.forEach(ele => {
+            this.$analytics.updateCF(this.$user.email, ele);
+          });
+
           await this.updateMain();
           break;
       }
@@ -75,10 +89,6 @@ export default {
   },
   async mounted() {
     await this.updateNewCards();
-
-    setTimeout(() => {
-      this.openAlart = true;
-    }, 2500);
   },
   computed: {
     getImageSrc() {

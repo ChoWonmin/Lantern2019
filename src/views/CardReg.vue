@@ -39,14 +39,13 @@ export default {
       this.file = files[0];
     },
     async sendCard() {
-      // const hashtag = this.hashtages.filter(e=>e.active===true).map(e=>e.text);
+      const hashtag = this.hashtages.filter(e=>e.active===true).map(e=>e.text);
 
       if (this.file !== undefined) {
-        // await this.$api.uploadCard(this.file, hashtag, this.$user.email, this.$user.region);
+        await this.$api.uploadCard(this.file, hashtag, this.$user.email, this.$user.region);
       }
 
-      this.$router.push({name:'myPage', params: {id: this.$user.email}});
-      // this.$router.push({name:'main'});
+      this.$router.push({name:'main'});
     }
   },
   computed: {

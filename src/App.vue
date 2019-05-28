@@ -16,14 +16,14 @@ import Header from './components/Header';
 import BottomNav from './components/BottomNav'
 import Login from './components/Login';
 import { authModule, dataModule, storageModule, analyticsModule } from './firebase/firebase.wrapper';
-import analytic from './analytics/analytic';
 
 Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
 Vue.prototype.$storage = storageModule;
+Vue.prototype.$analytics = analyticsModule;
 Vue.prototype.$user = {
-  email: 'Jun94@gmail.com',
+  email: '0108257@gmail.com',
   login: false,
   messageRooms: ['EprY3a6xMeOxHhpu9kEa'],
   region: 'Seoul, Republic of Korea',
@@ -54,7 +54,6 @@ export default {
     }
   },
   mounted() {
-
   }
 }
 </script>

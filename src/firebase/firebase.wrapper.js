@@ -206,8 +206,6 @@ const analyticsModule = {
 
     const pearsonVal = analytics.calcPearson(userLikeHashtags, otherLikeHashtags);
 
-    console.error(userLikeHashtags, otherLikeHashtags, pearsonVal);
-
     resources.database.collection('CF').doc(userID).collection('pearsonList').doc(otherID).set({
       val: pearsonVal,
       id: otherID
