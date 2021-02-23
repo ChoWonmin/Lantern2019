@@ -5,7 +5,6 @@
 
 ### Introduction
 
-![alt text](https://firebasestorage.googleapis.com/v0/b/myblog-51443.appspot.com/o/posts%2Ffigure1.JPG?alt=media&token=d5309bd6-965a-4780-a91d-2d52c84ad9a4)
 ![alt text](https://firebasestorage.googleapis.com/v0/b/myblog-51443.appspot.com/o/posts%2Ffigure2.JPG?alt=media&token=1e96b715-3962-4764-86c0-2e85c4548f15)
 ![alt text](https://firebasestorage.googleapis.com/v0/b/myblog-51443.appspot.com/o/posts%2Ffigure3.JPG?alt=media&token=26ec6391-0f52-4240-be4e-efecd5a6d835)
 ![alt text](https://firebasestorage.googleapis.com/v0/b/myblog-51443.appspot.com/o/posts%2Ffigure4.JPG?alt=media&token=7ea664f9-969b-4c95-b681-0cd3de7fa1ed)
